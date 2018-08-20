@@ -74,21 +74,25 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -163,8 +167,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Mods\FrameThrottle.h" />
     <ClInclude Include="LOMNAPI.h" />
     <ClInclude Include="LOMNHook.h" />
+    <ClInclude Include="LOMNAPI\ScProcess.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -172,7 +178,9 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ijl15.cpp" />
     <ClCompile Include="LOMNAPI.cpp" />
+    <ClCompile Include="LOMNAPI\ScProcess.cpp" />
     <ClCompile Include="LOMNHook.cpp" />
+    <ClCompile Include="Mods\FrameThrottle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

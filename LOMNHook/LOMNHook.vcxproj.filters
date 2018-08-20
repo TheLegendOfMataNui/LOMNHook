@@ -27,6 +27,12 @@
     <ClInclude Include="LOMNAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LOMNAPI\ScProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mods\FrameThrottle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LOMNAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mods\FrameThrottle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LOMNAPI\ScProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
