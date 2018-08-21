@@ -15,50 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="include\HookMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="include\Native\ScProcess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LOMNHook.h">
+    <ClInclude Include="src\LOMNHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LOMNAPI.h">
+    <ClInclude Include="src\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LOMNAPI\ScProcess.h">
+    <ClInclude Include="src\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mods\FrameThrottle.h">
+    <ClInclude Include="include\Native\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\Native\ScProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LOMNHook.cpp">
+    <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
+    <ClCompile Include="src\ijl15.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ijl15.cpp">
+    <ClCompile Include="src\LOMNHook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LOMNAPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mods\FrameThrottle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LOMNAPI\ScProcess.cpp">
+    <ClCompile Include="src\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ijl15.def">
+    <None Include="readme.md" />
+    <None Include="src\ijl15.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

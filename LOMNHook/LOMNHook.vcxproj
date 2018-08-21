@@ -74,28 +74,28 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
-    <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
-    <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
-    <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
     <TargetName>ijl15</TargetName>
-    <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,7 +112,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
-      <ModuleDefinitionFile>ijl15.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(SolutionPlatform).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -130,7 +130,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
-      <ModuleDefinitionFile>ijl15.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(SolutionPlatform).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -152,7 +152,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
-      <ModuleDefinitionFile>ijl15.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(SolutionPlatform).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -174,26 +174,24 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
-      <ModuleDefinitionFile>ijl15.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(SolutionPlatform).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Mods\FrameThrottle.h" />
-    <ClInclude Include="LOMNAPI.h" />
-    <ClInclude Include="LOMNHook.h" />
-    <ClInclude Include="LOMNAPI\ScProcess.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="include\HookMod.h" />
+    <ClInclude Include="include\Native\Vector.h" />
+    <ClInclude Include="src\LOMNHook.h" />
+    <ClInclude Include="include\Native\ScProcess.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="ijl15.cpp" />
-    <ClCompile Include="LOMNAPI.cpp" />
-    <ClCompile Include="LOMNAPI\ScProcess.cpp" />
-    <ClCompile Include="LOMNHook.cpp" />
-    <ClCompile Include="Mods\FrameThrottle.cpp" />
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\ijl15.cpp" />
+    <ClCompile Include="src\Native\ScProcess.cpp" />
+    <ClCompile Include="src\LOMNHook.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -201,7 +199,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ijl15.def" />
+    <None Include="src\ijl15.def" />
+    <None Include="readme.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
