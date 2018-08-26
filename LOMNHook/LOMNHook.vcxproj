@@ -72,28 +72,28 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
+    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle (Beta)\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
+    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle (Beta)\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
+    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle (Beta)\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle\</OutDir>
+    <OutDir>C:\Program Files (x86)\LEGO Media\LEGO Bionicle (Beta)\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir);$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
@@ -153,7 +153,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>ijl15.def</ModuleDefinitionFile>
-      <AdditionalDependencies>libMinHook.$(SolutionPlatform).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libMinHook.$(PlatformTarget).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
