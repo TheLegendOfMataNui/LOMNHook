@@ -5,7 +5,7 @@ struct ScProcess;
 // ScProcess Vtable
 typedef void* (__thiscall *ScProcess__VectorDeletingDestructor)(void*, int);
 typedef void(__thiscall *SxReferenceCountable__Free)(void);
-typedef void(__thiscall ScProcess::*ScProcess__Process)(double, double);
+typedef char(__thiscall ScProcess::*ScProcess__Process)(double, double);
 struct ScProcess__vtbl {
 	ScProcess__VectorDeletingDestructor _destructor;
 	SxReferenceCountable__Free _referenceCountableFree;

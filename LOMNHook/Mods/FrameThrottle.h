@@ -5,8 +5,9 @@
 struct FrameThrottle : ScProcess {
 public:
 	FrameThrottle();
-	void Process(double time, double deltaTime);
-	float TargetFrameTime = 1.0f / 60.0f;
+	char Process(double time, double deltaTime);
+	float TargetFPS = 60;
+	float TargetFrameTime = 1.0f / (float)TargetFPS;
 	bool Enabled = true;
 
 private:
