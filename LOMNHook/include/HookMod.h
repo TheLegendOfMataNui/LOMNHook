@@ -2,10 +2,11 @@
 
 #include <string>
 
-namespace LOMNHook 
-{
-	class HookMod
-	{
+#include "LOMNAPI.h"
+
+namespace LOMNHook {
+	class LOMNAPI HookMod {
+	public:
 		virtual std::wstring GetName() const = 0;
 		virtual int GetVersion() const = 0;
 

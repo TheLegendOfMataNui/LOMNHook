@@ -4,8 +4,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LOMNHook", "LOMNHook\LOMNHook.vcxproj", "{7791E2E9-5457-424D-B241-61BE67468A1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libMinHook", "minhook\build\VC15\libMinHook.vcxproj", "{F142A341-5EE0-442D-A15F-98AE9B48DBAE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExampleHookmod", "ExampleHookmod\ExampleHookmod.vcxproj", "{263F0023-F5E9-44CE-A06B-E9E23C2F142F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mods", "Mods", "{F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FramerateLimiter", "FramerateLimiter\FramerateLimiter.vcxproj", "{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,9 +48,29 @@ Global
 		{F142A341-5EE0-442D-A15F-98AE9B48DBAE}.Release|x64.Build.0 = Release|x64
 		{F142A341-5EE0-442D-A15F-98AE9B48DBAE}.Release|x86.ActiveCfg = Release|Win32
 		{F142A341-5EE0-442D-A15F-98AE9B48DBAE}.Release|x86.Build.0 = Release|Win32
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Debug|x64.ActiveCfg = Debug|x64
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Debug|x64.Build.0 = Debug|x64
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Debug|x86.ActiveCfg = Debug|Win32
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Debug|x86.Build.0 = Debug|Win32
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Release|x64.ActiveCfg = Release|x64
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Release|x64.Build.0 = Release|x64
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Release|x86.ActiveCfg = Release|Win32
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Release|x86.Build.0 = Release|Win32
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Debug|x64.ActiveCfg = Debug|x64
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Debug|x64.Build.0 = Debug|x64
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Debug|x86.ActiveCfg = Debug|Win32
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Debug|x86.Build.0 = Debug|Win32
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Release|x64.ActiveCfg = Release|x64
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Release|x64.Build.0 = Release|x64
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Release|x86.ActiveCfg = Release|Win32
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{263F0023-F5E9-44CE-A06B-E9E23C2F142F} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
+		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {178C98A1-29DA-4E34-8D8E-D392F9AACDDD}
