@@ -2,10 +2,8 @@
 
 #include "../LOMNAPI.h"
 
-namespace LOMNHook
-{
-	namespace Native
-	{
+namespace LOMNHook {
+	namespace Native {
 		struct ScProcess;
 
 		// ScProcess Vtable

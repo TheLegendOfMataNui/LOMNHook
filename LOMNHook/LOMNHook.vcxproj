@@ -181,17 +181,23 @@
   <ItemGroup>
     <ClInclude Include="include\HookMod.h" />
     <ClInclude Include="include\LOMNAPI.h" />
+    <ClInclude Include="include\Native\ScOSIVariant.h" />
     <ClInclude Include="include\Native\Vector.h" />
+    <ClInclude Include="include\OSIUtil.h" />
     <ClInclude Include="src\LOMNHook.h" />
     <ClInclude Include="include\Native\ScProcess.h" />
+    <ClInclude Include="include\Native\_ScBaseString.h" />
+    <ClInclude Include="src\OSIUtil.cpp" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\ijl15.cpp" />
+    <ClCompile Include="src\Native\ScOSIVariant.cpp" />
     <ClCompile Include="src\Native\ScProcess.cpp" />
     <ClCompile Include="src\LOMNHook.cpp" />
+    <ClCompile Include="src\Native\_ScBaseString.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
