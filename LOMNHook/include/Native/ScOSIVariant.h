@@ -8,7 +8,7 @@ namespace LOMNHook {
 
 		typedef unsigned short ScOSITypeID;
 
-		LOMNAPI struct __declspec(align(4)) ScOSIVariant {
+		struct __declspec(align(4)) LOMNAPI ScOSIVariant {
 		public:
 			ScOSITypeID TypeID;
 			size_t Payload;

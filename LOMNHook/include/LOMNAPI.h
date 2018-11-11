@@ -5,3 +5,5 @@
 #else
 #define LOMNAPI __declspec(dllimport)
 #endif
+
+LOMNAPI void OutputDebugMemory(void* start, const size_t& length, const char* label);

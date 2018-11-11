@@ -6,7 +6,7 @@
 namespace LOMNHook {
 	namespace Native {
 
-		LOMNAPI class __declspec(align(4)) _ScBaseString {
+		class __declspec(align(4)) LOMNAPI _ScBaseString {
 		public:
 			const char* Data;
 			int Length;
