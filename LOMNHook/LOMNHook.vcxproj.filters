@@ -51,6 +51,12 @@
     <ClInclude Include="include\Native\ScFastColor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ProcessUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ProcessUtil.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Native\ScProcess.cpp">

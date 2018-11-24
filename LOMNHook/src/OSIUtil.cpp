@@ -6,6 +6,16 @@
 
 using namespace LOMNHook::Util;
 
+typedef void(__thiscall *ScOSISystem__RegisterFunction)(ScOSISystem*, _ScBaseString*, _ScBaseString*, OSIFunctionCallback, char, char, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID);
+
+#if GAME_EDITION == BETA
+ScOSISystem** LOMNHook::Util::ScGlobalOSISystem__theOSISystem = (void**)0x0074D644;
+ScOSISystem__RegisterFunction pScOSISystem__RegisterFunction = (ScOSISystem__RegisterFunction)0x005FAB30;
+#elif GAME_EDITION == ALPHA
+ScOSISystem** LOMNHook::Util::ScGlobalOSISystem__theOSISystem = (void**)0x00630CE8;
+ScOSISystem__RegisterFunction pScOSISystem__RegisterFunction = (ScOSISystem__RegisterFunction)0x00572F90;
+#endif
+
 template<typename T>
 struct TreeNode {
 	TreeNode* Left;

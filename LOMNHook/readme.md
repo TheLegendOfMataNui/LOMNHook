@@ -32,6 +32,12 @@ If you are making a mod in the LOMNHook repository, please set the output direct
 `Debug` `x86`: `<your game folder>\mods\`
 `Release` `x86`: `$(SolutionDir)bin\$(Configuration)\mods\`
 
+Next, you need to tell LOMNHook what edition of the game you are going to be targeting by setting the `GAME_EDITION` macro.
+
+If you are only targeting one edition of the game, simply set the macro like so: `#define GAME_EDITION BETA` somewhere before `LOMNAPI.h` is included.
+
+If you are targeting both editions of the game, I would suggest creating additional solution & project configurations, and then defining the `GAME_EDITION` macro on a per-configuration basis in the Project Properties > C/C++ > Preprocessor > Preprocessor Definitions property sheet, for example, the Beta Release configuration might look like this: `WIN32;GAME_EDITION=BETA;NDEBUG;...;%(PreprocessorDefinitions)`.
+
 Then, add this starter code in the main C++ file:
 ```
 #include "HookMod.h"

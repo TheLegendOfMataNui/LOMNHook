@@ -2,6 +2,8 @@
 
 #include "LOMNAPI.h"
 
+#include <ShellAPI.h>
+
 const size_t groupSize = 4;
 const size_t lineSize = 0x10;
 
@@ -53,4 +55,24 @@ void OutputDebugMemory(void* start, const size_t& length, const char* label) {
 		OutputDebugByte(value);
 	}
 	OutputDebugStringA("\n");
+}
+
+std::vector<std::wstring> CommandLineArgs;
+bool ParsedCommandLine = false;
+
+LOMNAPI std::vector<std::wstring>& LOMNHook::GetCommandLineArgs() {
+	if (!ParsedCommandLine) {
+		int argCount = 0;
+		wchar_t** args = CommandLineToArgvW(GetCommandLineW(), &argCount);
+
+		if (args != nullptr) {
+			for (int i = 0; i < argCount; i++)
+				CommandLineArgs.push_back(args[i]);
+
+			ParsedCommandLine = true; // Should we set this even when parsing fails? IDK
+		}
+
+		LocalFree(args);
+	}
+	return CommandLineArgs;
 }

@@ -17,5 +17,9 @@ namespace LOMNHook {
 		// DoSetUp phase of startup
 		virtual void OnPreSetUp() { }
 		virtual void OnPostSetUp() { }
+
+		// When the InitFuncs are called again to shutdown
+		virtual void OnPreDeInit() { }
+		virtual void OnPostDeInit() { }
 	};
 }
