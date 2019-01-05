@@ -356,6 +356,7 @@
     <ClInclude Include="include\HookMod.h" />
     <ClInclude Include="include\LOMNAPI.h" />
     <ClInclude Include="include\Native\ScFastColor.h" />
+    <ClInclude Include="include\Native\ScIdentifier.h" />
     <ClInclude Include="include\Native\ScOSIVariant.h" />
     <ClInclude Include="include\Native\StRGBABytes.h" />
     <ClInclude Include="include\Native\Vector.h" />
