@@ -59,9 +59,9 @@ There will be 3 APIs for BetterSaver. The main two are Native and OSI, with the 
 `int IncrementIntegerValue(ushort ID)`  
 `bool RemoveIntegerValue(ushort ID)`  
 
-`string GetStringValue(ushort ID)`  
-`void SetStringValue(ushort ID, string value)`  
-`bool RemoveStringValue(ushort ID)`  
+`float GetFloatValue(ushort ID)`  
+`void SetFloatValue(ushort ID, float value)`  
+`bool RemoveFloatValue(ushort ID)`  
 
 The Microcode API works by repurposing unused conversation flag bits into instructions that will be executed when the conversation is run.  
 Care has been taken to make all-zeroes (the value that a legacy flag will have) equal the 'Boolean Set True' instruction, which mimics the legacy behavior.
