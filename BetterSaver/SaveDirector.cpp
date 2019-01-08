@@ -365,8 +365,10 @@ namespace SaveDirector {
 		//   Allocate the storage
 		if (pGcSaver__sConvMemory->Data == nullptr) {
 			pGcSaver__sConvMemory->Data = (GtConvMemory*)pSrMalloc(sizeof(GtConvMemory) * pGcSaver__sConvMemory->Count);
+			pGcSaver__sConvMemory->AllocatedCount = pGcSaver__sConvMemory->Count;
 		}
 		//   Then finally read the data
+		pGcSaver__sConvMemory->Count = 0;
 		for (xml_node conversation : saveNode.child("conversations").children("conversation")) {
 			LoadConversation(pGcSaver__sConvMemory->Data[pGcSaver__sConvMemory->Count], conversation);
 			pGcSaver__sConvMemory->Count++;
