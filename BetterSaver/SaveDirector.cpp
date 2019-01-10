@@ -68,7 +68,27 @@ unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
 #define GCSAVER_LOAD_FAILURE 0
 #define GCSAVER_LOAD_SUCCESS 1
 
+#include <map>
+
+#define DEFAULT_INTEGER 0
+#define DEFAULT_BOOLEAN false
+#define DEFAULT_FLOAT 0.0f
+#define DEFAULT_FLOAT_EPSILON 0.00001f
+
+#define MICROCODE_BIT_TYPE 24
+#define MICROCODE_BIT_OP1 25
+#define MICROCODE_BIT_OP2 26
+#define MICROCODE_BIT_IDMODE 27
+#define MICROCODE_MASK_TYPE (1 << MICROCODE_BIT_TYPE)
+#define MICROCODE_MASK_OP1 (1 << MICROCODE_BIT_OP1)
+#define MICROCODE_MASK_OP2 (1 << MICROCODE_BIT_OP2)
+#define MICROCODE_MASK_IDMODE (1 << MICROCODE_BIT_IDMODE)
+#define MICROCODE_MASK_ALL (MICROCODE_MASK_TYPE | MICROCODE_MASK_OP1 | MICROCODE_MASK_OP2 | MICROCODE_MASK_IDMODE)
+
 namespace SaveDirector {
+	std::map<ValueID, int> IntegerStorage;
+	std::map<ValueID, bool> BooleanStorage;
+	std::map<ValueID, float> FloatStorage;
 
 	char buffer[50];
 	void SaveScId(pugi::xml_node& parent, const char* element, ScIdentifier id) {
@@ -405,5 +425,169 @@ namespace SaveDirector {
 		*pGcSaver__sAmmoCount = saveNode.child("ammo").text().as_uint();
 
 		return GCSAVER_LOAD_SUCCESS;
+	}
+
+	bool GetBooleanValue(const ValueID& id) {
+		if (BooleanStorage.count(id)) {
+			return BooleanStorage.at(id);
+		}
+		return DEFAULT_BOOLEAN;
+	}
+
+	void SetBooleanValue(const ValueID& id, const bool& value) {
+		if (id < 32) {
+			// Update sConvConditions
+			if (value) {
+				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions | (1 << id);
+			}
+			else {
+				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions & ~(1 << id);
+			}
+		}
+		char msg[255];
+		if (value != DEFAULT_BOOLEAN) {
+			sprintf_s(msg, "[BetterSaver] Setting boolean [%u] to ", id);
+			OutputDebugStringA(msg);
+			OutputDebugStringA(value ? "true.\n" : "false.\n");
+			BooleanStorage.insert_or_assign(id, value);
+		}
+		else {
+			sprintf_s(msg, "[BetterSaver] Removing boolean [%u].\n", id);
+			OutputDebugStringA(msg);
+			RemoveBooleanValue(id);
+		}
+	}
+
+	bool RemoveBooleanValue(const ValueID& id) {
+		if (BooleanStorage.count(id) == 1) {
+			BooleanStorage.erase(id);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool ToggleBooleanValue(const ValueID& id) {
+		bool value = !GetBooleanValue(id);
+		SetBooleanValue(id, value);
+		return value;
+	}
+
+	int GetIntegerValue(const ValueID& id) {
+		if (IntegerStorage.count(id) == 1) {
+			return IntegerStorage.at(id);
+		}
+		return DEFAULT_INTEGER;
+	}
+
+	void SetIntegerValue(const ValueID& id, const int& value) {
+		if (value != DEFAULT_INTEGER) {
+			IntegerStorage.insert_or_assign(id, value);
+		}
+		else {
+			RemoveIntegerValue(id);
+		}
+	}
+
+	int IncrementIntegerValue(const ValueID& id) {
+		int value = GetIntegerValue(id) + 1;
+		SetIntegerValue(id, value);
+		return value;
+	}
+
+	int DecrementIntegerValue(const ValueID& id) {
+		int value = GetIntegerValue(id) - 1;
+		SetIntegerValue(id, value);
+		return value;
+	}
+
+	bool RemoveIntegerValue(const ValueID& id) {
+		if (IntegerStorage.count(id) == 1) {
+			IntegerStorage.erase(id);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	float GetFloatValue(const ValueID& id) {
+		if (FloatStorage.count(id) == 1) {
+			return FloatStorage.at(id);
+		}
+		return DEFAULT_FLOAT;
+	}
+
+	void SetFloatValue(const ValueID& id, const float& value) {
+		if (value < DEFAULT_FLOAT - DEFAULT_FLOAT_EPSILON || value > DEFAULT_FLOAT + DEFAULT_FLOAT_EPSILON) {
+			FloatStorage.insert_or_assign(id, value);
+		}
+		else {
+			RemoveFloatValue(id);
+		}
+	}
+
+	bool RemoveFloatValue(const ValueID& id) {
+		if (FloatStorage.count(id) == 1) {
+			FloatStorage.erase(id);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	void ExecuteMicrocodeInstruction(const ValueID& id, const bool& type, const bool& op1, const bool& op2) {
+		if (type) {
+			// Integer
+			if (op1) {
+				// Increment or Decrement
+				if (op2) {
+					// Decrement
+					DecrementIntegerValue(id);
+				}
+				else {
+					// Increment
+					IncrementIntegerValue(id);
+				}
+			}
+			else {
+				// Set to value of op2
+				SetIntegerValue(id, op2 ? 1 : 0);
+			}
+		}
+		else {
+			// Boolean
+			if (op1) {
+				// Toggle
+				ToggleBooleanValue(id);
+			}
+			else {
+				// Set to !op2
+				SetBooleanValue(id, !op2);
+			}
+		}
+	}
+
+	void ExecuteMicrocodeInstruction(const unsigned long& instruction) {
+		bool typeBit = (instruction & MICROCODE_MASK_TYPE) == MICROCODE_MASK_TYPE;
+		bool op1Bit = (instruction & MICROCODE_MASK_OP1) == MICROCODE_MASK_OP1;
+		bool op2Bit = (instruction & MICROCODE_MASK_OP2) == MICROCODE_MASK_OP2;
+		bool idModeBit = (instruction & MICROCODE_MASK_IDMODE) == MICROCODE_MASK_IDMODE;
+
+		if (idModeBit) {
+			// Low 16 bits are one ID
+			ExecuteMicrocodeInstruction(instruction & 0xFFFF, typeBit, op1Bit, op2Bit);
+		}
+		else {
+			// All non-Microcode bits are unique IDs
+			for (int bit = 0; bit < sizeof(unsigned long) * 8; bit++) {
+				if (bit != MICROCODE_BIT_TYPE && bit != MICROCODE_BIT_OP1 && bit != MICROCODE_BIT_OP2 && bit != MICROCODE_BIT_IDMODE
+					&& (instruction & (1 << bit)) == (1 << bit)) {
+					ExecuteMicrocodeInstruction(bit, typeBit, op1Bit, op2Bit);
+				}
+			}
+		}
 	}
 }

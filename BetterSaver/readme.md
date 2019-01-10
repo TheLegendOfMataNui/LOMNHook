@@ -43,8 +43,8 @@ bit 29: `kmisc8`
 bit 30: `kmisc9`  
 bit 31: `krandom`
 
-BetterSaver stores 3 dictionaries of saved values, each mapping a 16bit ID to a string, boolean, or integer value.
-Each dictionary is isolated, meaning the same ID can be used independently for a string value, an integer value, and a boolean value.
+BetterSaver stores 3 dictionaries of saved values, each mapping a 16bit ID to a float, boolean, or integer value.
+Each dictionary is isolated, meaning the same ID can be used independently for a float value, an integer value, and a boolean value.
 
 There will be 3 APIs for BetterSaver. The main two are Native and OSI, with the same functionality, which is as follows:  
 

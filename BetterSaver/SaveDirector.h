@@ -1,24 +1,31 @@
 #pragma once
 
 namespace SaveDirector {
+	typedef unsigned short ValueID;
+
 	void Save();
 	char Load();
 	void ResetData();
 
-	bool GetBooleanValue(const unsigned short& ID);
-	void SetBooleanValue(const unsigned short& ID, const bool& value);
-	bool RemoveBooleanValue(const unsigned short& ID);
-	bool ToggleBooleanValue(const unsigned short& ID);
+	// Gets the value with the given key, or false if there is none.
+	bool GetBooleanValue(const ValueID& id);
+	// Sets the value with the given key to the given value.
+	// Adds the value if it is not present.
+	void SetBooleanValue(const ValueID& id, const bool& value);
+	// Removes the value with the given key, if present.
+	// Returns whether there was a value to remove.
+	bool RemoveBooleanValue(const ValueID& id);
+	bool ToggleBooleanValue(const ValueID& id);
 
-	int GetIntegerValue(const unsigned short& ID);
-	void SetIntegerValue(const unsigned short& ID, const int& value);
-	int IncrementIntegerValue(const unsigned short& ID);
-	int DecrementIntegerValue(const unsigned short& ID);
-	bool RemoveIntegerValue(const unsigned short& ID);
+	int GetIntegerValue(const ValueID& id);
+	void SetIntegerValue(const ValueID& id, const int& value);
+	int IncrementIntegerValue(const ValueID& id);
+	int DecrementIntegerValue(const ValueID& id);
+	bool RemoveIntegerValue(const ValueID& id);
 
-	float GetFloatValue(const unsigned short& ID);
-	void SetFloatValue(const unsigned short& ID, const float& value);
-	bool RemoveFloatValue(const unsigned short& ID);
+	float GetFloatValue(const ValueID& id);
+	void SetFloatValue(const ValueID& id, const float& value);
+	bool RemoveFloatValue(const ValueID& id);
 
 	void ExecuteMicrocodeInstruction(const unsigned long& instruction);
 }
