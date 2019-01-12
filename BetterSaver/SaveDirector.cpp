@@ -265,6 +265,30 @@ namespace SaveDirector {
 		// Ammo
 		SaveInt(saveNode, "ammo", *pGcSaver__sAmmoCount);
 
+		// Int Values
+		xml_node intValuesNode = saveNode.append_child("intvalues");
+		for (std::pair<ValueID, int> entry : IntegerStorage) {
+			xml_node valueNode = intValuesNode.append_child("value");
+			valueNode.append_attribute("id").set_value(entry.first);
+			valueNode.append_attribute("value").set_value(entry.second);
+		}
+
+		// Boolean Values
+		xml_node booleanValuesNode = saveNode.append_child("booleanvalues");
+		for (std::pair<ValueID, bool> entry : BooleanStorage) {
+			xml_node valueNode = booleanValuesNode.append_child("value");
+			valueNode.append_attribute("id").set_value(entry.first);
+			valueNode.append_attribute("value").set_value(entry.second);
+		}
+
+		// Float Values
+		xml_node floatValuesNode = saveNode.append_child("floatvalues");
+		for (std::pair<ValueID, float> entry : FloatStorage) {
+			xml_node valueNode = floatValuesNode.append_child("value");
+			valueNode.append_attribute("id").set_value(entry.first);
+			valueNode.append_attribute("value").set_value(entry.second);
+		}
+
 		if (!doc.save_file(*pGcSaver__sPathString)) {
 			OutputDebugStringA("[GcSaver] Could not write file '");
 			OutputDebugStringA(*pGcSaver__sPathString);
@@ -424,7 +448,34 @@ namespace SaveDirector {
 		// Ammo
 		*pGcSaver__sAmmoCount = saveNode.child("ammo").text().as_uint();
 
+		// Int Values
+		for (xml_node valueNode : saveNode.child("intvalues").children("value")) {
+			ValueID id = valueNode.attribute("id").as_uint();
+			int value = valueNode.attribute("value").as_int();
+			SetIntegerValue(id, value);
+		}
+
+		// Boolean Values
+		for (xml_node valueNode : saveNode.child("booleanvalues").children("value")) {
+			ValueID id = valueNode.attribute("id").as_uint();
+			bool value = valueNode.attribute("value").as_bool();
+			SetBooleanValue(id, value);
+		}
+
+		// Float Values
+		for (xml_node valueNode : saveNode.child("floatvalues").children("value")) {
+			ValueID id = valueNode.attribute("id").as_uint();
+			float value = valueNode.attribute("value").as_float();
+			SetFloatValue(id, value);
+		}
+
 		return GCSAVER_LOAD_SUCCESS;
+	}
+
+	void ResetData() {
+		IntegerStorage.clear();
+		BooleanStorage.clear();
+		FloatStorage.clear();
 	}
 
 	bool GetBooleanValue(const ValueID& id) {

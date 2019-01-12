@@ -64,11 +64,11 @@ There will be 3 APIs for BetterSaver. The main two are Native and OSI, with the 
 `bool RemoveFloatValue(ushort ID)`  
 
 The Microcode API works by repurposing unused conversation flag bits into instructions that will be executed when the conversation is run.  
-Care has been taken to make all-zeroes (the value that a legacy flag will have) equal the 'Boolean Set True' instruction, which mimics the legacy behavior.
+Care has been taken to make all-zeroes in the Microcode bits (the values that a legacy flag will have) equal the 'Boolean Set True' instruction, which mimics the legacy behavior.
 
 bit 0: Type of value. 0 = Boolean, 1 = Integer.  
 bit 1: Operation I. Boolean: 0 = Set, 1 = Toggle. Integer: 0 = Set, 1 = Increment or Decrement.  
-bit 2: Operation II. Boolean: Set: 0 = True, 1 = False. Toggle: 0, Unused. Integer: Set: The value to be set to. Increment or Decrement: 0 = Increment, 1 = Decrement.
+bit 2: Operation II. Boolean: Set: 0 = True, 1 = False. Toggle: 0, Unused. Integer: Set: The value to be set to. Increment or Decrement: 0 = Increment, 1 = Decrement.  
 bit 3: ID Mode. 0: Operate all non-Microcode bits that are set to 1 as their own ID, 1: Use all non-Microcode bits as a single 32-bit integer.
 
 The Microcode for a conversation flag will be stored in bits 24-27. In other words, the above bits go here:  
