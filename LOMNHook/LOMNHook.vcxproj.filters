@@ -54,10 +54,13 @@
     <ClInclude Include="include\ProcessUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ProcessUtil.cpp">
+    <ClInclude Include="include\Native\ScIdentifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Native\ScIdentifier.h">
+    <ClInclude Include="include\pugiconfig.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pugixml.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -93,6 +96,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Native\ScFastColor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pugixml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ProcessUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
