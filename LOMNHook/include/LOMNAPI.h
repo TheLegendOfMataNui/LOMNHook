@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#define LOMNAPI_REVISION 1
+
 #define BETA 2
 #define ALPHA 1
 

@@ -9,6 +9,7 @@ namespace LOMNHook {
 	public:
 		virtual std::wstring GetName() const = 0;
 		virtual int GetVersion() const = 0;
+		virtual int GetAPIRevision() const = 0;
 
 		// InitFunc phase of startup
 		virtual void OnPreInit() { }
