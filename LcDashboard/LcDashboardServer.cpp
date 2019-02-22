@@ -1,26 +1,33 @@
 #include "stdafx.h"
 #include "LcDashboardServer.h"
 
-#include "libmicrohttpd-x86/include/microhttpd.h"
-//#include "libmicrohttpd-x86/include/"
+#include <libwebsockets.h>
 
-const char* HTTP_GET = "GET";
-int HTTPAnswerConnection(void* cls, MHD_Connection* connection, const char* url, const char* method, const char* version, const char* uploadData, size_t* uploadSize, void** con_cls) {
-    if (strcmp(HTTP_GET, method) != 0) {
-        return MHD_NO;
-    }
+#pragma comment(lib, "Ws2_32.lib")
 
-    const char* page = "<html><head><title>LcDashboardServer</title></head><body>Sup, it's LcDashboard!</body></html>";
-    int result = MHD_HTTP_OK;
-
-    MHD_Response* response = MHD_create_response_from_buffer(strlen(page), (void*)page, MHD_RESPMEM_PERSISTENT);
-    result = MHD_queue_response(connection, result, response);
-    MHD_destroy_response(response);
-    return result;
-}
+static const lws_http_mount StaticFileMount = {
+    /* .mount_next */		    NULL,		/* linked-list "next" */
+    /* .mountpoint */		    "/",		/* mountpoint URL */
+    /* .origin */			    "./mods/dashboard-client", /* serve from dir */
+    /* .def */			        "index.html",	/* default filename */
+    /* .protocol */			    NULL,
+    /* .cgienv */			    NULL,
+    /* .extra_mimetypes */	    NULL,
+    /* .interpret */		    NULL,
+    /* .cgi_timeout */		    0,
+    /* .cache_max_age */	    0,
+    /* .auth_mask */		    0,
+    /* .cache_reusable */		0,
+    /* .cache_revalidate */		0,
+    /* .cache_intermediaries */	0,
+    /* .origin_protocol */		LWSMPRO_FILE,	/* files in a dir */
+    /* .mountpoint_len */		1,		/* char count */
+    /* .basic_auth_login_file */NULL,
+};
 
 namespace LcDashboard {
-    LcDashboardServer::LcDashboardServer(LcDashboard* dashboard, const uint16_t& port) : Dashboard(dashboard), Daemon(nullptr), Port(port) {
+    LcDashboardServer::LcDashboardServer(LcDashboard* dashboard, const uint16_t& port) : Dashboard(dashboard), Port(port) {
+        lws_set_log_level(LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE, nullptr);
         this->Start();
     }
 
@@ -32,23 +39,34 @@ namespace LcDashboard {
 
     void LcDashboardServer::Start() {
         if (!this->IsRunning) {
-            this->Daemon = MHD_start_daemon(MHD_FLAG::MHD_NO_FLAG, this->Port, nullptr, nullptr, &HTTPAnswerConnection, nullptr, MHD_OPTION_END);
+
+            lws_context_creation_info info = { };
+            info.port = this->Port;
+            info.mounts = &StaticFileMount;
+
+            this->Context = lws_create_context(&info);
+
             this->IsRunning = true;
         }
     }
 
     void LcDashboardServer::Stop() {
         if (this->IsRunning) {
-            MHD_stop_daemon(this->Daemon);
-            this->Daemon = nullptr;
+            lws_context_destroy(this->Context);
+            this->Context = nullptr;
             this->IsRunning = false;
         }
     }
     
     void LcDashboardServer::Process() {
         if (this->IsRunning) {
-            int result = MHD_run(this->Daemon);
-            OutputDebugStringA("");
+            int status = lws_service(this->Context, 0);
+            if (status < 0) {
+                OutputDebugStringW(L"LcDashboard Server unexpectedly shutdown!\n");
+                lws_context_destroy(this->Context);
+                this->Context = nullptr;
+                this->IsRunning = false;
+            }
         }
     }
 }

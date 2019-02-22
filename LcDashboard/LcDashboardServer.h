@@ -2,12 +2,12 @@
 
 #include "LcDashboard.h"
 
-struct MHD_Daemon;
+struct lws_context;
 namespace LcDashboard {
     class LcDashboardServer {
     private:
         LcDashboard* Dashboard;
-        MHD_Daemon* Daemon;
+        lws_context* Context;
         bool IsRunning = false;
         uint16_t Port;
 
