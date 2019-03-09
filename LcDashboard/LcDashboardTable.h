@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 
+#undef min
+#undef max
 #include "rapidjson/document.h"
 
 #include "LcDashboardWidget.h"

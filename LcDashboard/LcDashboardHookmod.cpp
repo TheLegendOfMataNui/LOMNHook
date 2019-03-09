@@ -9,17 +9,19 @@
 
 #include "LcDashboardServer.h"
 
-LcDashboard::LcDashboardServer* Server = nullptr;
+using namespace LcDashboard;
+
+LcDashboardServer* Server = nullptr;
 
 struct HTTPServerProcess : public LOMNHook::Native::ScProcess {
-    LcDashboard::LcDashboardServer* Server = nullptr;
+    LcDashboardServer* Server = nullptr;
 
     char Process(double time, double deltaTime) {
         Server->Process();
         return 1;
     }
 
-    HTTPServerProcess(LcDashboard::LcDashboardServer* server) : LOMNHook::Native::ScProcess(), Server(server) {
+    HTTPServerProcess(LcDashboardServer* server) : LOMNHook::Native::ScProcess(), Server(server) {
         this->_vtbl->Process = (LOMNHook::Native::ScProcess__Process)&HTTPServerProcess::Process;
     }
 };
@@ -49,8 +51,10 @@ class LcDashboardHookmod : public LOMNHook::HookMod {
 
     void OnPreSetUp() override {
         // TODO: Delete GlobalDashboard and Server
-        LcDashboard::GlobalDashboard = new LcDashboard::LcDashboard();
-        Server = new LcDashboard::LcDashboardServer(LcDashboard::GlobalDashboard, 4812);
+        GlobalDashboard = new ::LcDashboard::LcDashboard();
+        GlobalDashboard->PutString("Test Table 1", "Test String 1", "Hello World!");
+        GlobalDashboard->PutString("Test Table 1/Test Table 1.1", "Test String 2", "Hello Again World!");
+        Server = new LcDashboardServer(GlobalDashboard, 4812);
     }
 
     void OnPostSetUp() override {

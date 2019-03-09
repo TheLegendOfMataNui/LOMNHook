@@ -345,6 +345,7 @@
     <ClCompile Include="LcDashboard.cpp" />
     <ClCompile Include="LcDashboardHookmod.cpp" />
     <ClCompile Include="LcDashboardServer.cpp" />
+    <ClCompile Include="LcDashboardTable.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Beta Debug|x64'">Create</PrecompiledHeader>

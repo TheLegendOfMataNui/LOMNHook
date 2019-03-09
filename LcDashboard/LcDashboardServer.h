@@ -14,6 +14,7 @@ namespace LcDashboard {
     public:
         LcDashboardServer(LcDashboard* dashboard, const uint16_t& port);
         ~LcDashboardServer();
+        LcDashboard* GetDashboard() const;
         void Start();
         void Stop();
         void Process();

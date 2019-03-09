@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg3791"
+   version="1.1"
+   viewBox="0 0 512 512"
+   height="512"
+   width="512">
+  <metadata
+     id="metadata3797">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Litestone</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3795" />
+  <title
+     id="title3756">Litestone</title>
+  <g
+     id="New">
+    <g
+       id="LitestoneColorH">
+      <g
+         data-name="Clipped Crystals"
+         id="Clipped_Crystals">
+        <polygon
+           id="polygon3761"
+           style="fill:#d89200"
+           points="35.1 368.83 35.1 308.57 123.85 219.82 184.11 219.82 184.11 269.62 84.9 368.83 35.1 368.83" />
+        <polygon
+           id="polygon3763"
+           style="fill:#d89200"
+           points="343.45 73.42 202.41 214.46 202.41 230.41 252.21 180.61 377.69 180.61 414.16 144.14 414.16 73.42 343.45 73.42" />
+        <polygon
+           id="polygon3765"
+           style="fill:#d89200"
+           points="437.56 251.19 411.55 277.2 411.55 339.94 382.66 368.83 419.52 368.83 487.36 300.99 487.36 251.19 437.56 251.19" />
+        <polygon
+           id="polygon3767"
+           style="fill:#fdc900"
+           points="259.79 198.91 202.41 256.29 202.41 277.2 110.78 368.83 356.78 368.83 393.25 332.36 393.25 198.91 259.79 198.91" />
+      </g>
+      <g
+         id="LITESTONE">
+        <path
+           id="path3770"
+           style="fill:#fff"
+           d="M23.85,431.46V383.14h7.42v42.75h26v5.57Z" />
+        <path
+           id="path3772"
+           style="fill:#fff"
+           d="M68.48,431.46v-5.57h13V388.71h-13v-5.57h33.41v5.57h-13v37.17h13v5.57Z" />
+        <path
+           id="path3774"
+           style="fill:#fff"
+           d="M127.95,431.46V388.71H109.38v-5.57H154v5.57H135.37v42.75Z" />
+        <path
+           id="path3776"
+           style="fill:#fff"
+           d="M163.05,431.46V383.14H195.7v5.57H170.47v14.65h21.39v5.57H170.47v16.95h27v5.57Z" />
+        <path
+           id="path3778"
+           style="fill:#fff"
+           d="M277.55,431.46V388.71H259v-5.57h44.59v5.57H285v42.75Z" />
+        <path
+           id="path3780"
+           style="fill:#fff"
+           d="M367.68,431.46V383h7l22.15,35.11h.08V383H403v48.47h-6.85L373.85,396h-.11v35.43Z" />
+        <path
+           id="path3782"
+           style="fill:#fff"
+           d="M416.71,431.46V383.14h32.65v5.57H424.13v14.65h21.39v5.57H424.13v16.95h27v5.57Z" />
+        <path
+           id="path3784"
+           style="fill:none;stroke:#fff;stroke-linecap:square;stroke-miterlimit:10;stroke-width:5.751267528533936px"
+           d="M252.69,401.72a21.74,21.74,0,0,0-41.86-.73l41.67,12.43a21.74,21.74,0,0,1-41.94-1" />
+        <circle
+           id="circle3786"
+           style="fill:none;stroke:#fff;stroke-linecap:square;stroke-miterlimit:10;stroke-width:5.751267528533936px"
+           r="21.97"
+           cy="407.17"
+           cx="331.37" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -2,6 +2,8 @@
 
 #include <string>
 
+#undef min
+#undef max
 #include "rapidjson/document.h"
 
 #include <Native/ScIdentifier.h>
@@ -16,6 +18,6 @@ namespace LcDashboard {
     public:
         const std::string& GetName() const;
         const LOMNHook::Native::ScIdentifier& GetWidgetTypeID() const;
-        virtual rapidjson::Value Serialize() const = 0;
+        virtual void Serialize(rapidjson::Value& destination, rapidjson::Document& doc) const = 0;
     };
 }
