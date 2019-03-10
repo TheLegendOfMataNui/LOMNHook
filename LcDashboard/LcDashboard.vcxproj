@@ -136,6 +136,8 @@
     <IncludePath>$(SolutionDir)LOMNHook\include;$(ProjectDir)libwebsockets\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libwebsockets\lib;$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -143,6 +145,8 @@
     <IncludePath>$(SolutionDir)LOMNHook\include;$(ProjectDir)libwebsockets\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libwebsockets\lib;$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -150,6 +154,8 @@
     <IncludePath>$(SolutionDir)LOMNHook\include;$(ProjectDir)libwebsockets\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libwebsockets\lib;$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -157,6 +163,8 @@
     <IncludePath>$(SolutionDir)LOMNHook\include;$(ProjectDir)libwebsockets\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libwebsockets\lib;$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -210,11 +218,17 @@
       <AdditionalDependencies>$(OutDir)..\ijl15.lib;websockets_static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+      <Command>
+      </Command>
       <Message>Copying Dashboard Client...</Message>
-      <Outputs>$(OutDir)dashboard-client</Outputs>
-      <Inputs>$(ProjectDir)dashboard-client</Inputs>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <ClCompile>
@@ -234,11 +248,17 @@
       <AdditionalDependencies>$(OutDir)..\ijl15.lib;websockets_static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+      <Command>
+      </Command>
       <Message>Copying Dashboard Client...</Message>
-      <Outputs>$(OutDir)dashboard-client</Outputs>
-      <Inputs>$(ProjectDir)dashboard-client</Inputs>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|Win32'">
     <ClCompile>
@@ -262,11 +282,17 @@
       <AdditionalDependencies>$(OutDir)..\ijl15.lib;websockets_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+      <Command>
+      </Command>
       <Message>Copying Dashboard Client...</Message>
-      <Outputs>$(OutDir)dashboard-client</Outputs>
-      <Inputs>$(ProjectDir)dashboard-client</Inputs>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">
     <ClCompile>
@@ -290,11 +316,17 @@
       <AdditionalDependencies>$(OutDir)..\ijl15.lib;websockets_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+      <Command>
+      </Command>
       <Message>Copying Dashboard Client...</Message>
-      <Outputs>$(OutDir)dashboard-client</Outputs>
-      <Inputs>$(ProjectDir)dashboard-client</Inputs>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>(robocopy "$(ProjectDir)dashboard-client" "$(OutDir)dashboard-client" /mir) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|x64'">
     <ClCompile>

@@ -35,24 +35,53 @@ script {
 #tabletree {
     width: 30%;
     max-width: 300px;
-    border-top-left-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.07) inset;
+    /*border-top-left-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.07) inset;*/
 }
 
 #canvas {
     flex-grow: 1;
-    border-top-left-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.07) inset;
+    /*border-top-left-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.07) inset;*/
 }
 
 #body {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-    border-top-left-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    /*border-top-left-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);*/
+    border-top: 1px solid rgba(60, 60, 60, 1.0);
 }
 
 #body > * {
     height: 100%;
+}
+
+/*
+ * Table Tree
+ */
+
+.tree-item {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-item-label {
+    padding: 2px 6px;
+    margin-left: -10000px;
+    padding-left: 10006px;
+}
+
+.tree-item-label.selected {
+    background-color: rgba(60, 60, 60, 1.0);
+}
+
+.tree-item-label:hover {
+    background-color: rgba(70, 70, 70, 1.0);
+}
+
+.tree-item-children {
+    margin-left: 20px;
 }

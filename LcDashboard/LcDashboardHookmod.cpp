@@ -54,6 +54,7 @@ class LcDashboardHookmod : public LOMNHook::HookMod {
         GlobalDashboard = new ::LcDashboard::LcDashboard();
         GlobalDashboard->PutString("Test Table 1", "Test String 1", "Hello World!");
         GlobalDashboard->PutString("Test Table 1/Test Table 1.1", "Test String 2", "Hello Again World!");
+        GlobalDashboard->PutString("Test Table 2/Thing/Thing2", "Other String", "thing");
         Server = new LcDashboardServer(GlobalDashboard, 4812);
     }
 
