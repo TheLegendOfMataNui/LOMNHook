@@ -2,7 +2,6 @@
 #include "SaveDirector.h"
 
 #include "LOMNAPI.h"
-#include "Native/ScIdentifier.h"
 #include "Native/Vector.h"
 
 #define PUGIXML_CLASS __declspec(dllimport) // to import all classes from DLL
@@ -10,27 +9,7 @@
 
 using namespace LOMNHook::Native;
 
-struct GtSaverData {
-	ScIdentifier ID;
-	ScIdentifier AreaID;
-};
-
-struct GtSaverTime {
-	ScIdentifier AreaID;
-	float Time;
-};
-
-struct GtConvMemory {
-	ScIdentifier AreaID;
-	ScIdentifier ID;
-	unsigned char Number;
-	char _pad[3];
-};
-
-typedef void*(__cdecl *SrMalloc)(unsigned int);
-
 #if GAME_EDITION == BETA
-SrMalloc pSrMalloc = (SrMalloc)0x004E4350;
 char** pGcSaver__sPathString = (char**)0x00838CF0;
 unsigned char* pGcSaver__sLevel = (unsigned char*)0x0074748C;
 ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x00747490;
@@ -408,7 +387,7 @@ namespace SaveDirector {
 			pGcSaver__sConvMemory->Count++;
 		//   Allocate the storage
 		if (pGcSaver__sConvMemory->Data == nullptr) {
-			pGcSaver__sConvMemory->Data = (GtConvMemory*)pSrMalloc(sizeof(GtConvMemory) * pGcSaver__sConvMemory->Count);
+			pGcSaver__sConvMemory->Data = (GtConvMemory*)SrMalloc(sizeof(GtConvMemory) * pGcSaver__sConvMemory->Count);
 			pGcSaver__sConvMemory->AllocatedCount = pGcSaver__sConvMemory->Count;
 		}
 		//   Then finally read the data
@@ -486,15 +465,6 @@ namespace SaveDirector {
 	}
 
 	void SetBooleanValue(const ValueID& id, const bool& value) {
-		if (id < 32) {
-			// Update sConvConditions
-			if (value) {
-				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions | (1 << id);
-			}
-			else {
-				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions & ~(1 << id);
-			}
-		}
 		char msg[255];
 		if (value != DEFAULT_BOOLEAN) {
 			sprintf_s(msg, "[BetterSaver] Setting boolean [%u] to ", id);
@@ -506,6 +476,16 @@ namespace SaveDirector {
 			sprintf_s(msg, "[BetterSaver] Removing boolean [%u].\n", id);
 			OutputDebugStringA(msg);
 			RemoveBooleanValue(id);
+		}
+		if (id < 32) {
+			OutputDebugStringA("    (ID < 32, updating legacy condition as well)\n");
+			// Update sConvConditions
+			if (value) {
+				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions | (1 << id);
+			}
+			else {
+				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions & ~(1 << id);
+			}
 		}
 	}
 
@@ -639,6 +619,26 @@ namespace SaveDirector {
 					ExecuteMicrocodeInstruction(bit, typeBit, op1Bit, op2Bit);
 				}
 			}
+		}
+	}
+
+	bool TestLegacyBoolean(const unsigned long& id) {
+		bool idModeBit = (id & MICROCODE_MASK_IDMODE) == MICROCODE_MASK_IDMODE;
+
+		if (idModeBit) {
+			// Low 16 bits are one ID
+			return GetBooleanValue(id & 0xFFFF);
+		}
+		else {
+			// All non-Microcode bits are unique IDs
+			for (int bit = 0; bit < sizeof(unsigned long) * 8; bit++) {
+				if (bit != MICROCODE_BIT_TYPE && bit != MICROCODE_BIT_OP1 && bit != MICROCODE_BIT_OP2 && bit != MICROCODE_BIT_IDMODE
+					&& (id & (1 << bit)) == (1 << bit)) {
+					if (!GetBooleanValue(bit))
+						return false;
+				}
+			}
+			return true;
 		}
 	}
 }

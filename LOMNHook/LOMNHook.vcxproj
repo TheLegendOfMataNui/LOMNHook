@@ -355,7 +355,9 @@
   <ItemGroup>
     <ClInclude Include="include\HookMod.h" />
     <ClInclude Include="include\LOMNAPI.h" />
+    <ClInclude Include="include\Native\Memory.h" />
     <ClInclude Include="include\Native\ScFastColor.h" />
+    <ClInclude Include="include\Native\ScFixedString.h" />
     <ClInclude Include="include\Native\ScIdentifier.h" />
     <ClInclude Include="include\Native\ScOSIVariant.h" />
     <ClInclude Include="include\Native\StRGBABytes.h" />
@@ -367,6 +369,7 @@
     <ClInclude Include="src\LOMNHook.h" />
     <ClInclude Include="include\Native\ScProcess.h" />
     <ClInclude Include="include\Native\_ScBaseString.h" />
+    <ClCompile Include="src\Native\Memory.cpp" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>

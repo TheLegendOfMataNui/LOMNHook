@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "Memory.h"
+
 namespace LOMNHook
 {
 	namespace Native
@@ -30,6 +32,20 @@ LOMNHook::Native::Vector<T>::Vector(int initialCount)
 template <typename T>
 void LOMNHook::Native::Vector<T>::PushBack(T value)
 {
+	if (this->Count >= this->AllocatedCount) {
+		T* oldData = this->Data;
+		int newCapacity = this->AllocatedCount * 2;
+		if (newCapacity == 0)
+			newCapacity = 1;
+
+		this->Data = (T*)SrMalloc(sizeof(T) * newCapacity);
+		for (int i = 0; i < this->Count; i++)
+			this->Data[i] = oldData[i];
+
+		this->AllocatedCount = newCapacity;
+
+		SrFree(oldData);
+	}
 	this->Data[Count] = value;
 	Count++;
 }
