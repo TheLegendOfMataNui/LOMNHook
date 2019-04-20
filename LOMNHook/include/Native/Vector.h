@@ -26,7 +26,8 @@ LOMNHook::Native::Vector<T>::Vector(int initialCount)
 {
 	Count = 0;
 	AllocatedCount = initialCount;
-	Data = (T*)operator new(initialCount * sizeof(T));
+	//Data = (T*)operator new(initialCount * sizeof(T));
+    Data = (T*)SrMalloc(sizeof(T) * initialCount);
 }
 
 template <typename T>
