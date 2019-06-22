@@ -85,7 +85,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
-    <OutDir>D:\Program Files\LEGO Media\LEGO Bionicle\mods\</OutDir>
+    <OutDir>D:\codemastrben\Documents\Projects\Modding\Bionicle\My Code\LOMN-Beta\build\mods\</OutDir>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
