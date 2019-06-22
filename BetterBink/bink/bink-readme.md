@@ -22,6 +22,7 @@ RADCFUNC void Close_RAD_3D( HRAD3D rad_3D, BOOL close_3d );
 **`dx8rad3d.cpp`**:
 ```
 #include "..\dx8\d3d8.h"
+#include "pch.h"
 ```
 
 ```

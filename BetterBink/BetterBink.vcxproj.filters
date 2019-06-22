@@ -15,22 +15,52 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bink\bink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bink\rad3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bink\radbase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dx8\d3d8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dx8\d3d8caps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dx8\d3d8types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dx8\dinput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionalPatchNative.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bink\dx8rad3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BetterBink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bink\bink-readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="bink\binkw32.lib" />
   </ItemGroup>
 </Project>

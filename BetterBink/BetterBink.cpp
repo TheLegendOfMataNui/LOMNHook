@@ -1,12 +1,12 @@
-#include "stdafx.h"
+#include "pch.h"
 
+#include "HookMod.h"
 #include <OSIUtil.h>
 #include <Native/StRGBABytes.h>
 #include <Native/ScFastColor.h>
 #include <Native/ScIdentifier.h>
 #include <Native/ScProcess.h>
 #include <LOMNAPI.h>
-#include "BetterBink.h"
 #include "../minhook/include/MinHook.h"
 
 #include "dx8\d3d8.h"
@@ -249,13 +249,33 @@ void __fastcall hGcPreRenderCinema__UnLoadCinematic(GcPreRenderCinema* _this, vo
     tGcPreRenderCinema__UnLoadCinematic(_this, unused);
 }
 
-void BetterBink_Hook() {
-    MH_CreateHook((void*)pGcPreRenderCinema__DecompressFrame, (void*)&mGcPreRenderCinema__DecompressFrame, (void**)&tGcPreRenderCinema__DecompressFrame);
-    MH_CreateHook((void*)pGcPreRenderCinema__LoadCinematic, (void*)&hGcPreRenderCinema__LoadCinematic, (void**)&tGcPreRenderCinema__LoadCinematic);
-    MH_CreateHook((void*)pGcPreRenderCinema__UnLoadCinematic, (void*)&hGcPreRenderCinema__UnLoadCinematic, (void**)&tGcPreRenderCinema__UnLoadCinematic);
-    MH_EnableHook(MH_ALL_HOOKS);
-}
+class BetterBink : public LOMNHook::HookMod {
+public:
+    std::wstring GetName() const override {
+        return L"BetterBink";
+    }
 
-void BetterBink_Unhook() {
-    MH_RemoveHook((void*)pGcPreRenderCinema__DecompressFrame);
+    int GetVersion() const override {
+        return 1;
+    }
+
+    int GetAPIRevision() const override {
+        return LOMNAPI_REVISION;
+    }
+
+    void OnPostInit() override {
+        MH_STATUS s = MH_Initialize();
+        MH_CreateHook((void*)pGcPreRenderCinema__DecompressFrame, (void*)&mGcPreRenderCinema__DecompressFrame, (void**)&tGcPreRenderCinema__DecompressFrame);
+        MH_CreateHook((void*)pGcPreRenderCinema__LoadCinematic, (void*)&hGcPreRenderCinema__LoadCinematic, (void**)&tGcPreRenderCinema__LoadCinematic);
+        MH_CreateHook((void*)pGcPreRenderCinema__UnLoadCinematic, (void*)&hGcPreRenderCinema__UnLoadCinematic, (void**)&tGcPreRenderCinema__UnLoadCinematic);
+        MH_EnableHook(MH_ALL_HOOKS);
+    }
+};
+
+BetterBink Instance;
+
+extern "C" {
+    __declspec(dllexport) LOMNHook::HookMod* HookmodInit() {
+        return &Instance;
+    }
 }
