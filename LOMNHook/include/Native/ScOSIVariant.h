@@ -31,6 +31,7 @@ namespace LOMNHook {
 		typedef unsigned short ScOSITypeID;
 
 		const ScOSITypeID VARIANT_OBJECT = 1;
+		const ScOSITypeID VARIANT_RETURN_ADDRESS = 2;
 		const ScOSITypeID VARIANT_ARRAY = 5;
 		const ScOSITypeID VARIANT_NULL = 15;
 		const ScOSITypeID VARIANT_INTEGER = 16;
