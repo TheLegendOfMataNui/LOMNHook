@@ -200,7 +200,7 @@ char __fastcall hGcPreRenderCinema__LoadCinematic(GcPreRenderCinema* _this, void
     (*pScDrawableContext__mD3DDevice)->GetViewport(&viewport);
     float hScale = (float)viewport.Width / _this->bink->Width;
     float vScale = (float)viewport.Height / _this->bink->Height;
-    float scale = hScale > vScale ? hScale : vScale;
+    float scale = hScale < vScale ? hScale : vScale;
     outWidth = _this->bink->Width * scale;
     outHeight = _this->bink->Height * scale;
     outX = viewport.Width / 2.0f - outWidth / 2.0f;
