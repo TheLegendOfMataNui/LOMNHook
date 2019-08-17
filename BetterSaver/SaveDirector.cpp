@@ -9,6 +9,15 @@
 
 using namespace LOMNHook::Native;
 
+struct __declspec(align(4)) SxReferenceCountable
+{
+	void* vtable;
+	int count;
+};
+
+typedef SxReferenceCountable*(__cdecl *GcAreaDirector__Get)(ScIdentifier*);
+typedef ScIdentifier* (__thiscall* GcAreaLoader__RemoveObject)(void*, ScIdentifier*);
+
 #if GAME_EDITION == BETA
 char** pGcSaver__sPathString = (char**)0x00838CF0;
 unsigned char* pGcSaver__sLevel = (unsigned char*)0x0074748C;
@@ -21,7 +30,7 @@ unsigned char* pGcSaver__sSaveGlyph = (unsigned char*)0x007474A4;
 unsigned char* pGcSaver__sSaveHealth = (unsigned char*)0x007474A8;
 unsigned char* pGcSaver__sSaveEnergy = (unsigned char*)0x007474AC;
 unsigned char* pGcSaver__sTokenCount = (unsigned char*)0x0083B402;
-GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00837AE8;
+//GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00837AE8;
 unsigned char* pGcSaver__sMaskCount = (unsigned char*)0x0083B401;
 GtSaverData* pGcSaver__sMasks = (GtSaverData*)0x008384A0;
 unsigned char* pGcSaver__sGlyphCount = (unsigned char*)0x0083B3FA;
@@ -40,6 +49,8 @@ unsigned char* pGcSaver__sGlyphFound = (unsigned char*)0x007474BC;
 unsigned char* pGcSaver__sStoneFound = (unsigned char*)0x007474C0;
 unsigned char* pGcSaver__sHookFound = (unsigned char*)0x007474C4;
 unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
+GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
+GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
 #elif GAME_EDITION == ALPHA
 
 #endif
@@ -68,6 +79,8 @@ namespace SaveDirector {
 	std::map<ValueID, int> IntegerStorage;
 	std::map<ValueID, bool> BooleanStorage;
 	std::map<ValueID, float> FloatStorage;
+
+	std::vector<GtSaverData> Tokens;
 
 	char buffer[50];
 	void SaveScId(pugi::xml_node& parent, const char* element, ScIdentifier id) {
@@ -188,7 +201,7 @@ namespace SaveDirector {
 		// Tokens
 		xml_node tokensElement = saveNode.append_child("tokens");
 		for (unsigned char i = 0; i < *pGcSaver__sTokenCount; i++)
-			SaveData(tokensElement, "token", (pGcSaver__sTokens)[i]);
+			SaveData(tokensElement, "token", (Tokens)[i]);
 
 		// Masks
 		xml_node masksElement = saveNode.append_child("masks");
@@ -345,7 +358,9 @@ namespace SaveDirector {
 		// Tokens
 		*pGcSaver__sTokenCount = 0;
 		for (xml_node token : saveNode.child("tokens").children("token")) {
-			LoadData((pGcSaver__sTokens)[*pGcSaver__sTokenCount], token);
+			GtSaverData tokenData;
+			LoadData(tokenData, token);
+			Tokens.push_back(tokenData);
 			(*pGcSaver__sTokenCount)++;
 		}
 		
@@ -455,6 +470,40 @@ namespace SaveDirector {
 		IntegerStorage.clear();
 		BooleanStorage.clear();
 		FloatStorage.clear();
+		Tokens.clear();
+	}
+
+	void PickupToken(LOMNHook::Native::ScIdentifier* id) {
+		Tokens.push_back(GtSaverData(*id, *pGcSaver__sArea));
+		(*pGcSaver__sTokenCount)++;
+	}
+
+	void CleanupLoad() {
+		void* areaLoader = pGcAreaDirector__Get(pGcSaver__sArea);
+		if (areaLoader != nullptr) {
+			// Remove collected tokens
+			for (int i = 0; i < Tokens.size(); i++) {
+				if (Tokens[i].AreaID.AsDWORD == pGcSaver__sArea->AsDWORD) {
+					// Remove the ID twice - one for the model, one for the collision (or something like that)
+					for (int j = 0; j < 2; j++)
+						pGcAreaLoader__RemoveObject(areaLoader, &Tokens[i].ID);
+				}
+			}
+
+			// Remove collected masks
+			for (int i = 0; i < *pGcSaver__sMaskCount; i++) {
+				if (pGcSaver__sMasks[i].AreaID.AsDWORD == pGcSaver__sArea->AsDWORD) {
+					pGcAreaLoader__RemoveObject(areaLoader, &pGcSaver__sMasks[i].ID);
+				}
+			}
+
+			// Remove collected glyphs
+			for (int i = 0; i < *pGcSaver__sGlyphCount; i++) {
+				if (pGcSaver__sGlyphs[i].AreaID.AsDWORD == pGcSaver__sArea->AsDWORD) {
+					pGcAreaLoader__RemoveObject(areaLoader, &pGcSaver__sGlyphs[i].ID);
+				}
+			}
+		}
 	}
 
 	bool GetBooleanValue(const ValueID& id) {

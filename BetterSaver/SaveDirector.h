@@ -45,6 +45,11 @@ namespace LOMNHook {
 		struct GtSaverData {
 			ScIdentifier ID;
 			ScIdentifier AreaID;
+
+			GtSaverData() = default;
+			GtSaverData(ScIdentifier id, ScIdentifier areaID) : ID(id), AreaID(areaID) {
+
+			}
 		};
 
 		struct GtSaverTime {
@@ -100,6 +105,8 @@ namespace SaveDirector {
 	void Save();
 	char Load();
 	void ResetData();
+	void PickupToken(LOMNHook::Native::ScIdentifier* id);
+	void CleanupLoad();
 
 	// Gets the value with the given key, or false if there is none.
 	bool GetBooleanValue(const ValueID& id);
