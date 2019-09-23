@@ -15,8 +15,9 @@ struct __declspec(align(4)) SxReferenceCountable
 	int count;
 };
 
-typedef SxReferenceCountable*(__cdecl *GcAreaDirector__Get)(ScIdentifier*);
+typedef SxReferenceCountable* (__cdecl *GcAreaDirector__Get)(ScIdentifier*);
 typedef ScIdentifier* (__thiscall* GcAreaLoader__RemoveObject)(void*, ScIdentifier*);
+typedef void (__cdecl* GcSaver__SetQuest)(unsigned char, char);
 
 #if GAME_EDITION == BETA
 char** pGcSaver__sPathString = (char**)0x00838CF0;
@@ -51,9 +52,15 @@ unsigned char* pGcSaver__sHookFound = (unsigned char*)0x007474C4;
 unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
 GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
 GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
+GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005D5E20;
 #elif GAME_EDITION == ALPHA
 
 #endif
+
+// GcSaver played a sound when certain booleans were set
+#define QUEST1_BOOLEAN_ID 14
+#define QUEST2_BOOLEAN_ID 16
+#define QUEST3_BOOLEAN_ID 18
 
 #define GCSAVER_LOAD_FAILURE 0
 #define GCSAVER_LOAD_SUCCESS 1
@@ -531,6 +538,13 @@ namespace SaveDirector {
 			// Update sConvConditions
 			if (value) {
 				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions | (1 << id);
+				// GcSaver called GcSaver::SetQuest when booleans 14, 16, or 18 were set to true
+				if (id == QUEST1_BOOLEAN_ID)
+					pGcSaver__SetQuest(*pGcSaver__sLevel, 1);
+				else if (id == QUEST2_BOOLEAN_ID)
+					pGcSaver__SetQuest(*pGcSaver__sLevel, 2);
+				else if (id == QUEST3_BOOLEAN_ID)
+					pGcSaver__SetQuest(*pGcSaver__sLevel, 3);
 			}
 			else {
 				*pGcSaver__sConvConditions = *pGcSaver__sConvConditions & ~(1 << id);
