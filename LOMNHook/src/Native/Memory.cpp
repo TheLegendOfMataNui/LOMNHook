@@ -10,7 +10,8 @@ typedef void(__cdecl *SrFree)(void*);
 static SrMalloc pSrMalloc = (SrMalloc)0x004E4350;
 static SrFree pSrFree = (SrFree)0x004E43B0;
 #elif GAME_EDITION == ALPHA
-
+static SrMalloc pSrMalloc = (SrMalloc)0x0049EE80;
+static SrFree pSrFree = (SrFree)0x0049EEE0;
 #endif
 
 namespace LOMNHook {

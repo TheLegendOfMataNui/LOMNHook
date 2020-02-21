@@ -54,7 +54,34 @@ GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
 GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
 GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005D5E20;
 #elif GAME_EDITION == ALPHA
-
+char** pGcSaver__sPathString = (char**)0x0069B674;
+unsigned char* pGcSaver__sLevel = (unsigned char*)0x0062DBA8;
+ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x0062DBAC;
+ScIdentifier* pGcSaver__sPos = (ScIdentifier*)0x0062DBB0;
+ScIdentifier* pGcSaver__sLook = (ScIdentifier*)0x0062DBB4;
+ScIdentifier* pGcSaver__sSaveToa = (ScIdentifier*)0x0062DBB8;
+ScIdentifier* pGcSaver__sSaveMask = (ScIdentifier*)0x0062DBBC;
+unsigned char* pGcSaver__sSaveGlyph = (unsigned char*)0x0062DBC0;
+unsigned char* pGcSaver__sSaveHealth = (unsigned char*)0x0062DBC4;
+unsigned char* pGcSaver__sSaveEnergy = (unsigned char*)0x0062DBC8;
+unsigned char* pGcSaver__sTokenCount = (unsigned char*)0x0069BECC;
+//GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00699730;
+unsigned char* pGcSaver__sMaskCount = (unsigned char*)0x0069BECB;
+GtSaverData* pGcSaver__sMasks = (GtSaverData*)0x0069AB88;
+unsigned char* pGcSaver__sGlyphCount = (unsigned char*)0x0069BEC4;
+GtSaverData* pGcSaver__sGlyphs = (GtSaverData*)0x00659668;
+unsigned char* pGcSaver__sInventoryCount = (unsigned char*)0x0069C0D8;
+GtSaverData* pGcSaver__sInventory = (GtSaverData*)0x0069ACD8;
+unsigned char* pGcSaver__sCinemaCount = (unsigned char*)0x0069BEC9;
+ScIdentifier* pGcSaver__sCinemas = (ScIdentifier*)0x00659688;
+unsigned long* pGcSaver__sConvConditions = (unsigned long*)0x0069BADC;
+Vector<GtConvMemory>* pGcSaver__sConvMemory = (Vector<GtConvMemory>*)0x0069B638;
+unsigned char* pGcSaver__sTimeCount = (unsigned char*)0x0069BEC6;
+GtSaverTime** pGcSaver__sTimes = (GtSaverTime**)0x0069ABF0;
+unsigned char* pGcSaver__sQuests = (unsigned char*)0x0069BE56;
+GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x00472A70;
+GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x004A9270;
+GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005576F0;
 #endif
 
 // GcSaver played a sound when certain booleans were set
@@ -249,6 +276,7 @@ namespace SaveDirector {
 			if ((pGcSaver__sQuests)[i] != 0)
 				SaveQuest(questsElement, "quest", i, (pGcSaver__sQuests)[i]);
 
+		#if GAME_EDITION == BETA
 		// Mask Flags
 		SaveInt(saveNode, "maskflags", *pGcSaver__sMaskNums);
 
@@ -263,6 +291,7 @@ namespace SaveDirector {
 
 		// Ammo
 		SaveInt(saveNode, "ammo", *pGcSaver__sAmmoCount);
+		#endif
 
 		// Int Values
 		xml_node intValuesNode = saveNode.append_child("intvalues");
@@ -434,6 +463,7 @@ namespace SaveDirector {
 			pGcSaver__sQuests[l] = quest.attribute("value").as_uint();
 		}
 
+		#if GAME_EDITION == BETA
 		// Mask Flags
 		*pGcSaver__sMaskNums = saveNode.child("maskflags").text().as_uint();
 
@@ -448,6 +478,7 @@ namespace SaveDirector {
 
 		// Ammo
 		*pGcSaver__sAmmoCount = saveNode.child("ammo").text().as_uint();
+		#endif
 
 		// Int Values
 		for (xml_node valueNode : saveNode.child("intvalues").children("value")) {
