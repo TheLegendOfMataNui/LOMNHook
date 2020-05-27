@@ -351,7 +351,7 @@ namespace SaveDirector {
 		*pGcSaver__sSaveToa = LoadScId(saveNode.child("toa").text().get());
 
 		// Mask
-		pGcSaver__sSaveMask->AsDWORD = saveNode.child("toa").text().as_uint();
+		pGcSaver__sSaveMask->AsDWORD = saveNode.child("mask").text().as_uint();
 
 		// Glyph
 		*pGcSaver__sSaveGlyph = saveNode.child("glyph").text().as_uint();
