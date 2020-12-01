@@ -15,7 +15,7 @@ namespace LOMNHook {
 
 		typedef ScOSIVariant* (*OSIFunctionCallback)(ScOSIVariant*, ScOSIVirtualMachine*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 
-		LOMNAPI void OSIRegisterFunction(OSIFunctionCallback callback, const char* ns, const char* name, char argMin, char argMax, ScOSITypeID paramType1, ScOSITypeID paramType2, ScOSITypeID paramType3, ScOSITypeID paramType4, ScOSITypeID paramType5, ScOSITypeID paramType6, ScOSITypeID paramType7, ScOSITypeID paramType8, ScOSITypeID paramType9, ScOSITypeID paramType10);
+		LOMNAPI void OSIRegisterFunction(OSIFunctionCallback callback, const char* ns, const char* name, char argMin, char argMax, ScOSITypeID paramType1 = VARIANT_NULL, ScOSITypeID paramType2 = VARIANT_NULL, ScOSITypeID paramType3 = VARIANT_NULL, ScOSITypeID paramType4 = VARIANT_NULL, ScOSITypeID paramType5 = VARIANT_NULL, ScOSITypeID paramType6 = VARIANT_NULL, ScOSITypeID paramType7 = VARIANT_NULL, ScOSITypeID paramType8 = VARIANT_NULL, ScOSITypeID paramType9 = VARIANT_NULL, ScOSITypeID paramType10 = VARIANT_NULL);
 		LOMNAPI ScOSITypeID OSIGetTypeID(const char* typeName);
 	}
 }
