@@ -21,7 +21,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RahiHandler.cpp">
+    <ClCompile Include="GameplayCameraHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
