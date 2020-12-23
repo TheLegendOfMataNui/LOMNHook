@@ -316,7 +316,7 @@ Native::ScOSIVariant* GcLegoCamera__SetCamZoomFactor(Native::ScOSIVariant* resul
 class DefaultCameraHandler : public HookMod {
 public:
     std::wstring GetName() const override {
-        return L"Litestone Default Camera Handler Hookmod";
+        return L"Litestone Gameplay Camera Handler Hookmod";
     }
 
     int GetVersion() const override {
