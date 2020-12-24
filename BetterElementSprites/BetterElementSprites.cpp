@@ -29,6 +29,16 @@ typedef void(__cdecl* GcParticle__release)();
 GcParticle__release tGcParticle__release;
 GcParticle__release pGcParticle__release = (GcParticle__release)0x005F1470;
 
+struct GcToa;
+
+GcToa** GcGame__sToa = (GcToa**)0x007032B8;
+
+typedef void(__fastcall* GcToa__CleanUpEmitters)(GcToa* _this);
+typedef void(__fastcall* GcToa__SetUpEmitters)(GcToa* _this, int a2, int a3);
+
+GcToa__CleanUpEmitters fp__GcToa__CleanUpEmitters = (GcToa__CleanUpEmitters)0x0056FB00;
+GcToa__SetUpEmitters fp__GcToa__SetUpEmitters = (GcToa__SetUpEmitters)0x0056F3F0;
+
 void(__cdecl hGcParticle__create)(GcParticle__create) {
     tGcParticle__create();
 }
@@ -143,6 +153,23 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     return result;
 }
 
+Native::ScOSIVariant* GcToa__CycleEmitters(Native::ScOSIVariant* result, Util::ScOSIVirtualMachine* vm, int emitteron, void* param2, void* param3, void* param4, void* param5, void* param6, void* param7, void* param8, void* param9, void* param10) {
+    DWORD oldProtect;
+    
+    //Tahu Sword Particles
+    char* replaceemitter = (char*)(0x0056F5C8 + 1);
+    VirtualProtect(replaceemitter, sizeof(char), PAGE_EXECUTE_READWRITE, &oldProtect);
+    *replaceemitter = emitteron;
+    VirtualProtect(replaceemitter, sizeof(char), oldProtect, &oldProtect);
+
+    fp__GcToa__CleanUpEmitters(*GcGame__sToa);
+    fp__GcToa__SetUpEmitters(*GcGame__sToa, 0, 0);
+
+    result->TypeID = LOMNHook::Native::VARIANT_NULL;
+    result->Payload = 0;
+    return result;
+}
+
 
 class BetterElementSprites : public HookMod {
 public:
@@ -166,6 +193,7 @@ public:
         s = MH_EnableHook(MH_ALL_HOOKS);
 
         LOMNHook::Util::OSIRegisterFunction((Util::OSIFunctionCallback)GcToa__SetElementSprites, "GcToa", "SetElementSprites", 1, 1, VARIANT_INTEGER, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf);
+        LOMNHook::Util::OSIRegisterFunction((Util::OSIFunctionCallback)GcToa__CycleEmitters, "GcToa", "CycleEmitters", 1, 1, VARIANT_INTEGER, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf, 0xf);
     }
 };
 
