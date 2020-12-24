@@ -46,6 +46,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CinemaPositionEnabler", "Ci
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameplayCameraHandler", "GameplayCameraHandler\GameplayCameraHandler.vcxproj", "{41C4F492-A0DF-4486-935B-60B3ED14F069}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BetterElementSprites", "BetterElementSprites\BetterElementSprites.vcxproj", "{72FAF375-A430-4D47-BA4B-936F1DC46F52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Alpha Debug|x64 = Alpha Debug|x64
@@ -297,6 +299,28 @@ Global
 		{41C4F492-A0DF-4486-935B-60B3ED14F069}.Release|x64.Build.0 = Beta Release|Win32
 		{41C4F492-A0DF-4486-935B-60B3ED14F069}.Release|x86.ActiveCfg = Beta Release|Win32
 		{41C4F492-A0DF-4486-935B-60B3ED14F069}.Release|x86.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Debug|x64.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Debug|x64.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Debug|x86.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Debug|x86.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Release|x64.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Release|x64.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Release|x86.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Alpha Release|x86.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Debug|x64.ActiveCfg = Beta Debug|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Debug|x86.ActiveCfg = Beta Debug|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Debug|x86.Build.0 = Beta Debug|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Release|x64.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Release|x86.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Beta Release|x86.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Debug|x64.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Debug|x64.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Debug|x86.ActiveCfg = Beta Debug|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Debug|x86.Build.0 = Beta Debug|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Release|x64.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Release|x64.Build.0 = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Release|x86.ActiveCfg = Beta Release|Win32
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52}.Release|x86.Build.0 = Beta Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,6 +335,7 @@ Global
 		{305BB0BA-74F4-4D64-8A4E-DF587B8F3E15} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
 		{41C4F492-A0DF-4486-935B-60B3ED14F069} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
+		{72FAF375-A430-4D47-BA4B-936F1DC46F52} = {F8BA8CE6-25A7-4D27-9855-AB6A0B4062BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {178C98A1-29DA-4E34-8D8E-D392F9AACDDD}
