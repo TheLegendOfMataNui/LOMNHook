@@ -55,8 +55,8 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     const char** replaceprojtahu = (const char**)(0x0056B418 + 1);
     VirtualProtect(replaceprojtahu, sizeof(replaceprojtahu), PAGE_EXECUTE_READWRITE, &oldProtect);
     *replaceprojtahu = tahuproj;
-    VirtualProtect(replaceprojtahu, sizeof(replaceprojtahu), oldProtect, &oldProtect);
-
+    VirtualProtect(replaceprojtahu, sizeof(replaceprojtahu), oldProtect, &oldProtect);  
+    
     //Lewa Burst Sprites
     const char* lewaburst = "Root/data/Art/particles/lewaprojectile";
     const char** replaceburstlewa = (const char**)(0x006306E3 + 1);
@@ -77,6 +77,21 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     //Note: These require cycling GcParticle::Release & GcParticle::Create, hence their separation.
     //Create is run at startup, and thus, the following code is ignored unless it's reset.
 
+    if (toaID == 1) {
+        //Onua Ring Particles
+        const char* onuaring = "Root/data/Art/particles/onuaRING.tga";
+        const char** replaceringonua = (const char**)(0x005F12EA + 1);
+        VirtualProtect(replaceringonua, sizeof(replaceringonua), PAGE_EXECUTE_READWRITE, &oldProtect);
+        *replaceringonua = onuaring;
+        VirtualProtect(replaceringonua, sizeof(replaceringonua), oldProtect, &oldProtect);
+
+        //Onua Spark Particles
+        const char* onuaspark = "Root/data/Art/particles/onuasparks.tga";
+        const char** replacesparkonua = (const char**)(0x005F1330 + 1);
+        VirtualProtect(replacesparkonua, sizeof(replacesparkonua), PAGE_EXECUTE_READWRITE, &oldProtect);
+        *replacesparkonua = onuaspark;
+        VirtualProtect(replacesparkonua, sizeof(replacesparkonua), oldProtect, &oldProtect);
+    }    
     if (toaID == 5) {
         //Lewa Ring Particles
         const char* lewaring = "Root/data/Art/particles/lewaRING.tga";
