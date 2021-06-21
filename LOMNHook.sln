@@ -37,16 +37,40 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BetterBink", "BetterBink\Be
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RahiHandler", "RahiHandler\RahiHandler.vcxproj", "{57C597E6-1982-4C09-9AA8-497806ECDF13}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BetterAddPart", "BetterAddPart\BetterAddPart.vcxproj", "{27179194-4F7D-4812-8CEE-556D3B4D388E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CharColourHandler", "CharColourHandler\CharColourHandler.vcxproj", "{305BB0BA-74F4-4D64-8A4E-DF587B8F3E15}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CinemaPositionEnabler", "CinemaPositionEnabler\CinemaPositionEnabler.vcxproj", "{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameplayCameraHandler", "GameplayCameraHandler\GameplayCameraHandler.vcxproj", "{41C4F492-A0DF-4486-935B-60B3ED14F069}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BetterElementSprites", "BetterElementSprites\BetterElementSprites.vcxproj", "{72FAF375-A430-4D47-BA4B-936F1DC46F52}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -267,8 +291,8 @@ Global
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Debug|x86.ActiveCfg = Beta Debug|Win32
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Debug|x86.Build.0 = Beta Debug|Win32
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Release|x64.ActiveCfg = Beta Release|Win32
-		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Release|x86.ActiveCfg = Beta Debug|Win32
-		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Release|x86.Build.0 = Beta Debug|Win32
+		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Release|x86.ActiveCfg = Beta Release|Win32
+		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Beta Release|x86.Build.0 = Beta Release|Win32
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Debug|x64.ActiveCfg = Beta Debug|Win32
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Debug|x64.Build.0 = Beta Debug|Win32
 		{7C0B8070-5E6B-4BA8-BF81-FAA7EF77A190}.Debug|x86.ActiveCfg = Beta Debug|Win32
