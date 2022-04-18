@@ -200,7 +200,8 @@ Global
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Debug|x64.Build.0 = Beta Debug|Win32
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Debug|x86.ActiveCfg = Beta Debug|Win32
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Debug|x86.Build.0 = Beta Debug|Win32
-		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Release|x64.ActiveCfg = Beta Release|Win32
+		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Release|x64.ActiveCfg = Beta Release|x64
+		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Release|x64.Build.0 = Beta Release|x64
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Release|x86.ActiveCfg = Beta Release|Win32
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Beta Release|x86.Build.0 = Beta Release|Win32
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Debug|x64.ActiveCfg = Beta Debug|x64
