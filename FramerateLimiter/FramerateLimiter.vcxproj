@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)..\LOMN-Beta\build\mods\</OutDir>
+    <OutDir>..\..\LOMN-Beta-Rebuilt\build\mods\</OutDir>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
