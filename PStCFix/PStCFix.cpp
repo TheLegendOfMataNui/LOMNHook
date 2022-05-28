@@ -1,12 +1,11 @@
 // PStCFix.cpp : Defines the exported functions for the DLL application.
 //
 
+#define GAME_EDITION BETA
 
-
-#include "pch.h"
+#include "stdafx.h"
 
 #include "HookMod.h"
-//#include <MinHook.h>
 #include "../minhook/include/MinHook.h"
 #include <OSIUtil.h>
 #include <Native/_ScBaseString.h>
@@ -192,23 +191,11 @@ class PStCFix : public LOMNHook::HookMod {
 		return LOMNAPI_REVISION;
 	}
 
-	void OnPreInit() override {
-		OutputDebugStringW(L"PStCFix OnPreInit!\n");
-	}
-
 	void OnPostInit() override {
 		OutputDebugStringW(L"PStCFix OnPostInit!\n");
 		MH_STATUS s = MH_Initialize();
 		s = MH_CreateHook(pOSIGcAreaDirector__SetLanguage, &hOSIGcAreaDirector__SetLanguage, (void**)&tOSIGcAreaDirector__SetLanguage);
 		s = MH_EnableHook(MH_ALL_HOOKS);
-	}
-
-	void OnPreSetUp() override {
-		OutputDebugStringW(L"PStCFix OnPreSetUp!\n");
-	}
-
-	void OnPostSetUp() override {
-		OutputDebugStringW(L"PStCFix OnPostSetUp!\n");
 	}
 };
 
