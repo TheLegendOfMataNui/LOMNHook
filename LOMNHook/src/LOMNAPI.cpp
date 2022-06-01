@@ -96,7 +96,8 @@ void LOMNHook::ResolveGamePath(const char* filename, char* buffer, size_t buffer
 	else if (userStart == filename) {
 		// The filename should be relative to the game's directory in AppData
 		SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, buffer); // (Does not end with a backslash)
-		strcat_s(buffer, bufferLength, "\\LOMNBeta"); // TODO: Differentiate specific versions
+		strcat_s(buffer, bufferLength, "\\");
+		strcat_s(buffer, bufferLength, LOMNHook::GetGameEdition());
 		filenameStart = filename + 4; // length of "User"
 	}
 	else {
@@ -127,4 +128,38 @@ void LOMNHook::ResolveGamePath(const char* filename, char* buffer, size_t buffer
 		SHCreateDirectoryExA(NULL, buffer, NULL);
 		buffer[lastBackslash + 1] = afterBackslash;
 	}
+}
+
+const char* gameEdition = nullptr;
+
+const char* LOMNHook::GetGameEdition() {
+	if (gameEdition == nullptr) {
+		FILE* file = nullptr;
+		fopen_s(&file, "edition.txt", "r");
+		if (file != nullptr) {
+			fseek(file, 0, SEEK_END);
+			size_t length = ftell(file);
+			fseek(file, 0, SEEK_SET);
+			char* edition = new char[length + 1];
+			fread(edition, 1, length, file);
+			fclose(file);
+			edition[length] = '\0';
+
+			// Trim whitespace off the end
+			for (int i = length - 1; i >= 0; i--) {
+				if (edition[i] != ' ' && edition[i] != '\t' && edition[i] != '\r' && edition[i] != '\n') {
+					break;
+				}
+				else {
+					edition[i] = '\0';
+				}
+			}
+			gameEdition = edition;
+		}
+		else {
+			gameEdition = "LOMN-Unknown";
+		}
+	}
+
+	return gameEdition;
 }

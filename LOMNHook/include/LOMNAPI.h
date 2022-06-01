@@ -29,4 +29,5 @@ namespace LOMNHook {
 	 * Starting the input path with "User/" results in a path that starts with the folder where data specific to the person using the PC is stored, for example, in their account's AppData folder.
 	 */
 	LOMNAPI void ResolveGamePath(const char* filename, char* buffer, size_t bufferLength, bool createDirectory);
+	LOMNAPI const char* GetGameEdition();
 }
