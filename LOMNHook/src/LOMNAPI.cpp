@@ -3,6 +3,7 @@
 #include "LOMNAPI.h"
 
 #include <ShellAPI.h>
+#include <ShlObj.h>
 
 const size_t groupSize = 4;
 const size_t lineSize = 0x10;
@@ -19,11 +20,11 @@ char HexChar(char hex) {
 	}
 }
 
-char byte[3] = { 0, 0, 0 };
+char byteChars[3] = { 0, 0, 0 };
 void OutputDebugByte(char value) {
-	byte[0] = HexChar((value & 0xF0) >> 4);
-	byte[1] = HexChar(value & 0x0F);
-	OutputDebugStringA(byte);
+	byteChars[0] = HexChar((value & 0xF0) >> 4);
+	byteChars[1] = HexChar(value & 0x0F);
+	OutputDebugStringA(byteChars);
 }
 
 void OutputDebugMemory(void* start, const size_t& length, const char* label) {
@@ -60,7 +61,7 @@ void OutputDebugMemory(void* start, const size_t& length, const char* label) {
 std::vector<std::wstring> CommandLineArgs;
 bool ParsedCommandLine = false;
 
-LOMNAPI std::vector<std::wstring>& LOMNHook::GetCommandLineArgs() {
+std::vector<std::wstring>& LOMNHook::GetCommandLineArgs() {
 	if (!ParsedCommandLine) {
 		int argCount = 0;
 		wchar_t** args = CommandLineToArgvW(GetCommandLineW(), &argCount);
@@ -75,4 +76,55 @@ LOMNAPI std::vector<std::wstring>& LOMNHook::GetCommandLineArgs() {
 		LocalFree(args);
 	}
 	return CommandLineArgs;
+}
+
+void LOMNHook::ResolveGamePath(const char* filename, char* buffer, size_t bufferLength, bool createDirectory) {
+	buffer[0] = '\0';
+
+	// First, determine what location the filename is relative to, and expand to an absolute path.
+	// Filenames relative to the game directory start with "Root/", and
+	// filenames relative to the user-specific game directory start with "User/".
+	// Filenames that are not relative to either Root or User are not allowed, for security reasons.
+	const char* rootStart = strstr(filename, "Root/");
+	const char* userStart = strstr(filename, "User/");
+	const char* filenameStart = filename;
+	if (rootStart == filename) {
+		// The filename should be relative to the game directory
+		GetCurrentDirectoryA(bufferLength, buffer); // (Does not end with a backslash)
+		filenameStart = filename + 4; // length of "Root"
+	}
+	else if (userStart == filename) {
+		// The filename should be relative to the game's directory in AppData
+		SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, buffer); // (Does not end with a backslash)
+		strcat_s(buffer, bufferLength, "\\LOMNBeta"); // TODO: Differentiate specific versions
+		filenameStart = filename + 4; // length of "User"
+	}
+	else {
+		char message[400];
+		snprintf(message, 400, "Fatal: We disallow writing to filenames that do not start with Root or User. (filename: %s)", filename);
+		MessageBoxA(NULL, message, "OSI Script Security Abort", MB_OK | MB_ICONERROR);
+	}
+
+	// Append the given filename
+	strcat_s(buffer, bufferLength, filenameStart);
+
+	// Replace all forward slashes with backslashes
+	size_t length = strlen(buffer);
+	size_t lastBackslash = 0;
+	for (size_t i = 0; i < length; i++) {
+		if (buffer[i] == '/') {
+			buffer[i] = '\\';
+		}
+		if (buffer[i] == '\\') {
+			lastBackslash = i;
+		}
+	}
+
+	if (createDirectory) {
+		// Ensure that the directory exists
+		char afterBackslash = buffer[lastBackslash + 1];
+		buffer[lastBackslash + 1] = '\0';
+		SHCreateDirectoryExA(NULL, buffer, NULL);
+		buffer[lastBackslash + 1] = afterBackslash;
+	}
 }
