@@ -135,7 +135,7 @@ const char* gameEdition = nullptr;
 const char* LOMNHook::GetGameEdition() {
 	if (gameEdition == nullptr) {
 		FILE* file = nullptr;
-		fopen_s(&file, "edition.txt", "r");
+		fopen_s(&file, "version.txt", "r");
 		if (file != nullptr) {
 			fseek(file, 0, SEEK_END);
 			size_t length = ftell(file);
