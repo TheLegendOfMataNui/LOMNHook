@@ -105,6 +105,7 @@ namespace SaveDirector {
 	void Save();
 	char Load();
 	void ResetData();
+	void InitData();
 	void PickupToken(LOMNHook::Native::ScIdentifier* id);
 	void CleanupLoad();
 

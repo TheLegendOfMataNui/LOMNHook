@@ -50,6 +50,7 @@ unsigned char* pGcSaver__sGlyphFound = (unsigned char*)0x007474BC;
 unsigned char* pGcSaver__sStoneFound = (unsigned char*)0x007474C0;
 unsigned char* pGcSaver__sHookFound = (unsigned char*)0x007474C4;
 unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
+unsigned char* pGcSaver__sPlayerNum = (unsigned char*)0x007474B0;
 GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
 GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
 GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005D5E20;
@@ -478,6 +479,14 @@ namespace SaveDirector {
 		BooleanStorage.clear();
 		FloatStorage.clear();
 		Tokens.clear();
+	}
+
+	void InitData() {
+		// Overwrite the save filename so saves are in AppData instead of the program files
+		char* pathString = *pGcSaver__sPathString;
+		char desiredPath[MAX_PATH];
+		sprintf_s(desiredPath, "User/data/player%d.sav", *pGcSaver__sPlayerNum);
+		LOMNHook::ResolveGamePath(desiredPath, pathString, 255, true);
 	}
 
 	void PickupToken(LOMNHook::Native::ScIdentifier* id) {
