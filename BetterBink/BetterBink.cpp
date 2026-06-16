@@ -76,7 +76,6 @@ struct __declspec(align(4)) ScRenderNode
     BYTE byte_61;
 };
 
-
 struct __declspec(align(4)) GcPreRenderCinema
 {
     ScRenderNode super;
@@ -90,38 +89,38 @@ struct __declspec(align(4)) GcPreRenderCinema
     LPDIRECTINPUTDEVICE8A keyboard;
 };
 
-
-
-
-
 typedef bool(__fastcall* GcPreRenderCinema__DecompressFrame)(GcPreRenderCinema*, void*);
 GcPreRenderCinema__DecompressFrame tGcPreRenderCinema__DecompressFrame = nullptr;
 typedef char(__fastcall* GcPreRenderCinema__LoadCinematic)(GcPreRenderCinema*, void*, _ScBaseString*, char);
 GcPreRenderCinema__LoadCinematic tGcPreRenderCinema__LoadCinematic = nullptr;
 typedef void(__fastcall* GcPreRenderCinema__UnLoadCinematic)(GcPreRenderCinema*, void*);
 GcPreRenderCinema__UnLoadCinematic tGcPreRenderCinema__UnLoadCinematic = nullptr;
-#if GAME_EDITION == BETA
-IDirect3D8** pScDrawableContext__mpD3D = (IDirect3D8 * *)0x00738BC0;
-IDirect3DDevice8** pScDrawableContext__mD3DDevice = (IDirect3DDevice8**)0x00738BC4;
 
-GcPreRenderCinema__DecompressFrame pGcPreRenderCinema__DecompressFrame = (GcPreRenderCinema__DecompressFrame)0x005E2E80;
-GcPreRenderCinema__LoadCinematic pGcPreRenderCinema__LoadCinematic = (GcPreRenderCinema__LoadCinematic)0x005E2F40;
-GcPreRenderCinema__UnLoadCinematic pGcPreRenderCinema__UnLoadCinematic = (GcPreRenderCinema__UnLoadCinematic)0x005E3050;
-#else
-#error Alpha isn't supported.
+#if GAME_EDITION == BETA
+    IDirect3D8** pScDrawableContext__mpD3D = (IDirect3D8**)0x00738BC0;
+    IDirect3DDevice8** pScDrawableContext__mD3DDevice = (IDirect3DDevice8**)0x00738BC4;
+
+    GcPreRenderCinema__DecompressFrame pGcPreRenderCinema__DecompressFrame = (GcPreRenderCinema__DecompressFrame)0x005E2E80;
+    GcPreRenderCinema__LoadCinematic pGcPreRenderCinema__LoadCinematic = (GcPreRenderCinema__LoadCinematic)0x005E2F40;
+    GcPreRenderCinema__UnLoadCinematic pGcPreRenderCinema__UnLoadCinematic = (GcPreRenderCinema__UnLoadCinematic)0x005E3050;
+    const void* ScScreenManager__PrimaryScreen = (void*)0x0070FA64;
+#elif GAME_EDITION == ALPHA
+    IDirect3D8** pScDrawableContext__mpD3D = (IDirect3D8**)0x0062317C;
+    IDirect3DDevice8** pScDrawableContext__mD3DDevice = (IDirect3DDevice8**)0x00623180;
+
+    GcPreRenderCinema__DecompressFrame pGcPreRenderCinema__DecompressFrame = (GcPreRenderCinema__DecompressFrame)0x0055FF50;
+    GcPreRenderCinema__LoadCinematic pGcPreRenderCinema__LoadCinematic = (GcPreRenderCinema__LoadCinematic)0x00560000;
+    GcPreRenderCinema__UnLoadCinematic pGcPreRenderCinema__UnLoadCinematic = (GcPreRenderCinema__UnLoadCinematic)0x00560110;
+    const void* ScScreenManager__PrimaryScreen = (void*)0x00615680;
 #endif
 
-
-
-
-const void* ScScreenManager__PrimaryScreen = (void*)0x0070FA64;
 const int ScScreen__oPlatformScreen = 44;
 const int ScPlatformScreen__oHWND = 12;
 
 HWND GetWindowHandle() {
     int* ppPlatformScreen = (int*)((int)ScScreenManager__PrimaryScreen + ScScreen__oPlatformScreen);
-    HWND* pPlatformScreenHWND = (HWND*)((int)ppPlatformScreen + ScPlatformScreen__oHWND);
-    //HWND* pPlatformScreenHWND = (HWND*)((int)ScScreenManager__PrimaryScreen + 32);
+    //HWND* pPlatformScreenHWND = (HWND*)((int)ppPlatformScreen + ScPlatformScreen__oHWND);
+    HWND* pPlatformScreenHWND = (HWND*)((int)ScScreenManager__PrimaryScreen + 32);
     return *pPlatformScreenHWND;
 }
 
