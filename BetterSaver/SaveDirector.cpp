@@ -15,47 +15,75 @@ struct __declspec(align(4)) SxReferenceCountable
 	int count;
 };
 
-typedef SxReferenceCountable* (__cdecl *GcAreaDirector__Get)(ScIdentifier*);
+typedef SxReferenceCountable* (__cdecl* GcAreaDirector__Get)(ScIdentifier*);
 typedef ScIdentifier* (__thiscall* GcAreaLoader__RemoveObject)(void*, ScIdentifier*);
-typedef void (__cdecl* GcSaver__SetQuest)(unsigned char, char);
+typedef void(__cdecl* GcSaver__SetQuest)(unsigned char, char);
 
 #if GAME_EDITION == BETA
-char** pGcSaver__sPathString = (char**)0x00838CF0;
-unsigned char* pGcSaver__sLevel = (unsigned char*)0x0074748C;
-ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x00747490;
-ScIdentifier* pGcSaver__sPos = (ScIdentifier*)0x00747494;
-ScIdentifier* pGcSaver__sLook = (ScIdentifier*)0x00747498;
-ScIdentifier* pGcSaver__sSaveToa = (ScIdentifier*)0x0074749C;
-ScIdentifier* pGcSaver__sSaveMask = (ScIdentifier*)0x007474A0;
-unsigned char* pGcSaver__sSaveGlyph = (unsigned char*)0x007474A4;
-unsigned char* pGcSaver__sSaveHealth = (unsigned char*)0x007474A8;
-unsigned char* pGcSaver__sSaveEnergy = (unsigned char*)0x007474AC;
-unsigned char* pGcSaver__sTokenCount = (unsigned char*)0x0083B402;
-//GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00837AE8;
-unsigned char* pGcSaver__sMaskCount = (unsigned char*)0x0083B401;
-GtSaverData* pGcSaver__sMasks = (GtSaverData*)0x008384A0;
-unsigned char* pGcSaver__sGlyphCount = (unsigned char*)0x0083B3FA;
-GtSaverData* pGcSaver__sGlyphs = (GtSaverData*)0x007F79F0;
-unsigned char* pGcSaver__sInventoryCount = (unsigned char*)0x0083B50F;
-GtSaverData* pGcSaver__sInventory = (GtSaverData*)0x00838620;
-unsigned char* pGcSaver__sCinemaCount = (unsigned char*)0x0083B3FF;
-ScIdentifier* pGcSaver__sCinemas = (ScIdentifier*)0x007F7A10;
-unsigned long* pGcSaver__sConvConditions = (unsigned long*)0x008391A0;
-Vector<GtConvMemory>* pGcSaver__sConvMemory = (Vector<GtConvMemory>*)0x00838B90;
-unsigned char* pGcSaver__sTimeCount = (unsigned char*)0x0083B3FC;
-GtSaverTime** pGcSaver__sTimes = (GtSaverTime**)0x00838508;
-unsigned char* pGcSaver__sQuests = (unsigned char*)0x0083B380;
-unsigned char* pGcSaver__sMaskNums = (unsigned char*)0x007474B8;
-unsigned char* pGcSaver__sGlyphFound = (unsigned char*)0x007474BC;
-unsigned char* pGcSaver__sStoneFound = (unsigned char*)0x007474C0;
-unsigned char* pGcSaver__sHookFound = (unsigned char*)0x007474C4;
-unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
-unsigned char* pGcSaver__sPlayerNum = (unsigned char*)0x007474B0;
-GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
-GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
-GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005D5E20;
+	char** pGcSaver__sPathString = (char**)0x00838CF0;
+	unsigned char* pGcSaver__sLevel = (unsigned char*)0x0074748C;
+	ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x00747490;
+	ScIdentifier* pGcSaver__sPos = (ScIdentifier*)0x00747494;
+	ScIdentifier* pGcSaver__sLook = (ScIdentifier*)0x00747498;
+	ScIdentifier* pGcSaver__sSaveToa = (ScIdentifier*)0x0074749C;
+	ScIdentifier* pGcSaver__sSaveMask = (ScIdentifier*)0x007474A0;
+	unsigned char* pGcSaver__sSaveGlyph = (unsigned char*)0x007474A4;
+	unsigned char* pGcSaver__sSaveHealth = (unsigned char*)0x007474A8;
+	unsigned char* pGcSaver__sSaveEnergy = (unsigned char*)0x007474AC;
+	unsigned char* pGcSaver__sTokenCount = (unsigned char*)0x0083B402;
+	//GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00837AE8;
+	unsigned char* pGcSaver__sMaskCount = (unsigned char*)0x0083B401;
+	GtSaverData* pGcSaver__sMasks = (GtSaverData*)0x008384A0;
+	unsigned char* pGcSaver__sGlyphCount = (unsigned char*)0x0083B3FA;
+	GtSaverData* pGcSaver__sGlyphs = (GtSaverData*)0x007F79F0;
+	unsigned char* pGcSaver__sInventoryCount = (unsigned char*)0x0083B50F;
+	GtSaverData* pGcSaver__sInventory = (GtSaverData*)0x00838620;
+	unsigned char* pGcSaver__sCinemaCount = (unsigned char*)0x0083B3FF;
+	ScIdentifier* pGcSaver__sCinemas = (ScIdentifier*)0x007F7A10;
+	unsigned long* pGcSaver__sConvConditions = (unsigned long*)0x008391A0;
+	Vector<GtConvMemory>* pGcSaver__sConvMemory = (Vector<GtConvMemory>*)0x00838B90;
+	unsigned char* pGcSaver__sTimeCount = (unsigned char*)0x0083B3FC;
+	GtSaverTime** pGcSaver__sTimes = (GtSaverTime**)0x00838508;
+	unsigned char* pGcSaver__sQuests = (unsigned char*)0x0083B380;
+	unsigned char* pGcSaver__sMaskNums = (unsigned char*)0x007474B8;
+	unsigned char* pGcSaver__sGlyphFound = (unsigned char*)0x007474BC;
+	unsigned char* pGcSaver__sStoneFound = (unsigned char*)0x007474C0;
+	unsigned char* pGcSaver__sHookFound = (unsigned char*)0x007474C4;
+	unsigned short* pGcSaver__sAmmoCount = (unsigned short*)0x007474C8;
+	unsigned char* pGcSaver__sPlayerNum = (unsigned char*)0x007474B0;
+	GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x0048A810;
+	GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x00501DC0;
+	GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005D5E20;
 #elif GAME_EDITION == ALPHA
-
+	char** pGcSaver__sPathString = (char**)0x0069B674;
+	unsigned char* pGcSaver__sLevel = (unsigned char*)0x0062DBA8;
+	ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x0062DBAC;
+	ScIdentifier* pGcSaver__sPos = (ScIdentifier*)0x0062DBB0;
+	ScIdentifier* pGcSaver__sLook = (ScIdentifier*)0x0062DBB4;
+	ScIdentifier* pGcSaver__sSaveToa = (ScIdentifier*)0x0062DBB8;
+	ScIdentifier* pGcSaver__sSaveMask = (ScIdentifier*)0x0062DBBC;
+	unsigned char* pGcSaver__sSaveGlyph = (unsigned char*)0x0062DBC0;
+	unsigned char* pGcSaver__sSaveHealth = (unsigned char*)0x0062DBC4;
+	unsigned char* pGcSaver__sSaveEnergy = (unsigned char*)0x0062DBC8;
+	unsigned char* pGcSaver__sTokenCount = (unsigned char*)0x0069BECC;
+	//GtSaverData* pGcSaver__sTokens = (GtSaverData*)0x00699730;
+	unsigned char* pGcSaver__sMaskCount = (unsigned char*)0x0069BECB;
+	GtSaverData* pGcSaver__sMasks = (GtSaverData*)0x0069AB88;
+	unsigned char* pGcSaver__sGlyphCount = (unsigned char*)0x0069BEC4;
+	GtSaverData* pGcSaver__sGlyphs = (GtSaverData*)0x00659668;
+	unsigned char* pGcSaver__sInventoryCount = (unsigned char*)0x0069C0D8;
+	GtSaverData* pGcSaver__sInventory = (GtSaverData*)0x0069ACD8;
+	unsigned char* pGcSaver__sCinemaCount = (unsigned char*)0x0069BEC9;
+	ScIdentifier* pGcSaver__sCinemas = (ScIdentifier*)0x00659688;
+	unsigned long* pGcSaver__sConvConditions = (unsigned long*)0x0069BADC;
+	Vector<GtConvMemory>* pGcSaver__sConvMemory = (Vector<GtConvMemory>*)0x0069B638;
+	unsigned char* pGcSaver__sTimeCount = (unsigned char*)0x0069BEC6;
+	GtSaverTime** pGcSaver__sTimes = (GtSaverTime**)0x0069ABF0;
+	unsigned char* pGcSaver__sQuests = (unsigned char*)0x0069BE56;
+	GcAreaDirector__Get pGcAreaDirector__Get = (GcAreaDirector__Get)0x00472A70;
+	GcAreaLoader__RemoveObject pGcAreaLoader__RemoveObject = (GcAreaLoader__RemoveObject)0x004A9270;
+	GcSaver__SetQuest pGcSaver__SetQuest = (GcSaver__SetQuest)0x005576F0;
+	unsigned char* pGcSaver__sPlayerNum = (unsigned char*)0x0062DBCC;
 #endif
 
 // GcSaver played a sound when certain booleans were set
@@ -249,21 +277,22 @@ namespace SaveDirector {
 		for (int i = 0; i < 6; i++)
 			if ((pGcSaver__sQuests)[i] != 0)
 				SaveQuest(questsElement, "quest", i, (pGcSaver__sQuests)[i]);
+		#if GAME_EDITION == BETA
+			// Mask Flags
+			SaveInt(saveNode, "maskflags", *pGcSaver__sMaskNums);
 
-		// Mask Flags
-		SaveInt(saveNode, "maskflags", *pGcSaver__sMaskNums);
+			// Glyph
+			SaveInt(saveNode, "glyph", *pGcSaver__sGlyphFound);
 
-		// Glyph
-		SaveInt(saveNode, "glyph", *pGcSaver__sGlyphFound);
+			// Stone
+			SaveInt(saveNode, "stone", *pGcSaver__sStoneFound);
 
-		// Stone
-		SaveInt(saveNode, "stone", *pGcSaver__sStoneFound);
+			// Hook
+			SaveInt(saveNode, "hook", *pGcSaver__sHookFound);
 
-		// Hook
-		SaveInt(saveNode, "hook", *pGcSaver__sHookFound);
-
-		// Ammo
-		SaveInt(saveNode, "ammo", *pGcSaver__sAmmoCount);
+			// Ammo
+			SaveInt(saveNode, "ammo", *pGcSaver__sAmmoCount);
+		#endif
 
 		// Int Values
 		xml_node intValuesNode = saveNode.append_child("intvalues");
@@ -371,7 +400,7 @@ namespace SaveDirector {
 			Tokens.push_back(tokenData);
 			(*pGcSaver__sTokenCount)++;
 		}
-		
+
 		// Masks
 		*pGcSaver__sMaskCount = 0;
 		for (xml_node mask : saveNode.child("masks").children("mask")) {
@@ -434,21 +463,22 @@ namespace SaveDirector {
 			unsigned int l = quest.attribute("level").as_uint();
 			pGcSaver__sQuests[l] = quest.attribute("value").as_uint();
 		}
+		#if GAME_EDITION == BETA
+			// Mask Flags
+			*pGcSaver__sMaskNums = saveNode.child("maskflags").text().as_uint();
 
-		// Mask Flags
-		*pGcSaver__sMaskNums = saveNode.child("maskflags").text().as_uint();
+			// Glyph
+			*pGcSaver__sGlyphFound = saveNode.child("glyph").text().as_uint();
 
-		// Glyph
-		*pGcSaver__sGlyphFound = saveNode.child("glyph").text().as_uint();
+			// Stone
+			*pGcSaver__sStoneFound = saveNode.child("stone").text().as_uint();
 
-		// Stone
-		*pGcSaver__sStoneFound = saveNode.child("stone").text().as_uint();
+			// Hook
+			*pGcSaver__sHookFound = saveNode.child("hook").text().as_uint();
 
-		// Hook
-		*pGcSaver__sHookFound = saveNode.child("hook").text().as_uint();
-
-		// Ammo
-		*pGcSaver__sAmmoCount = saveNode.child("ammo").text().as_uint();
+			// Ammo
+			*pGcSaver__sAmmoCount = saveNode.child("ammo").text().as_uint();
+		#endif
 
 		// Int Values
 		for (xml_node valueNode : saveNode.child("intvalues").children("value")) {
