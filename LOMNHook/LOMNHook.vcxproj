@@ -84,14 +84,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\..\LOMN-Beta-Rebuilt\build\</OutDir>
+    <OutDir>..\..\LOMN-Rebuilt\build\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>D:\Program Files\LEGO Bionicle\</OutDir>
+    <OutDir>..\..\LOMN-Alpha\build</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>

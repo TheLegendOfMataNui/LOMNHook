@@ -72,15 +72,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\LOMN-Beta-Rebuilt\build\mods\</OutDir>
+    <OutDir>..\..\LOMN-Rebuilt\build\mods\</OutDir>
     <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>D:\Program Files\LEGO Bionicle\mods\</OutDir>
     <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\LOMN-Alpha\build\mods</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
