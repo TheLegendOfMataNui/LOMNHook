@@ -5,6 +5,9 @@
 #include <ShellAPI.h>
 #include <ShlObj.h>
 
+#include <shlwapi.h>
+#pragma comment(lib, "Shlwapi.lib")
+
 const size_t groupSize = 4;
 const size_t lineSize = 0x10;
 
@@ -91,14 +94,47 @@ void LOMNHook::ResolveGamePath(const char* filename, char* buffer, size_t buffer
 	if (rootStart == filename) {
 		// The filename should be relative to the game directory
 		GetCurrentDirectoryA(bufferLength, buffer); // (Does not end with a backslash)
-		filenameStart = filename + 4; // length of "Root"
+		filenameStart = filename + 4;  // length of "Root"
 	}
 	else if (userStart == filename) {
 		// The filename should be relative to the game's directory in AppData
-		SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, buffer); // (Does not end with a backslash)
+		// Build the OLD path structure
+		char oldBaseDir[MAX_PATH];
+		SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, oldBaseDir);  // (Does not end with a backslash)
+		strcat_s(oldBaseDir, MAX_PATH, "\\");
+		strcat_s(oldBaseDir, MAX_PATH, LOMNHook::GetGameEdition());
+
+		// Build the new parent path
+		char newParentDir[MAX_PATH];
+		SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, newParentDir);
+		strcat_s(newParentDir, MAX_PATH, "\\Litestone Studios");
+
+		// Build the new final path
+		char newBaseDir[MAX_PATH];
+		strcpy_s(newBaseDir, MAX_PATH, newParentDir);
+		strcat_s(newBaseDir, MAX_PATH, "\\");
+		strcat_s(newBaseDir, MAX_PATH, LOMNHook::GetGameEdition());
+
+		// === MIGRATION LOGIC ===
+		// If the old folder exists, but the new one doesn't yet, migrate it!
+		if (PathFileExistsA(oldBaseDir) && !PathFileExistsA(newBaseDir)) {
+			// Ensure the "Litestone Studios" parent directory exists first
+			SHCreateDirectoryExA(NULL, newParentDir, NULL);
+
+			// Move the entire folder structure natively
+			// MoveFileA will rename/move the directory and all its contents instantly
+			if (!MoveFileA(oldBaseDir, newBaseDir)) {
+				// Optional: If MoveFile fails (e.g. file lock), you could log an error here,
+				// but fallback to oldBaseDir to prevent breaking the user's game.
+				OutputDebugStringA("LOMNHook: Failed to migrate data folder.\n");
+			}
+		}
+		// =======================
+
+		// Continue with standard path resolution using the new path
+		strcpy_s(buffer, bufferLength, newBaseDir);
 		strcat_s(buffer, bufferLength, "\\");
-		strcat_s(buffer, bufferLength, LOMNHook::GetGameEdition());
-		filenameStart = filename + 4; // length of "User"
+		filenameStart = filename + 5; // length of "User"
 	}
 	else {
 		char message[400];
