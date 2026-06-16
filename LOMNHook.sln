@@ -73,6 +73,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BetterElementSprites", "Bet
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PStCFIx", "PStCFIx\PStCFIx.vcxproj", "{7A4A39FC-F0A8-4DBD-B0CA-C819EA93A387}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F142A341-5EE0-442D-A15F-98AE9B48DBAE} = {F142A341-5EE0-442D-A15F-98AE9B48DBAE}
+		{7791E2E9-5457-424D-B241-61BE67468A1B} = {7791E2E9-5457-424D-B241-61BE67468A1B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
