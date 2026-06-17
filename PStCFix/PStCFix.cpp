@@ -135,12 +135,12 @@ struct GcConversationEngine {
 	BYTE pad_4[2];
 	GcConversationEditor* conversation_editor;
 #elif GAME_EDITION == ALPHA
-  BYTE pad_1[180];
-  ScTileFont *not_relevant;
-  ScTextObject *also_not_relevant;
-  BYTE pad_2[28];
-  ScTextObject *pstc_text_obj;
-  BYTE pad_3[92];
+	BYTE pad_1[180];
+	ScTileFont *not_relevant;
+	ScTextObject *also_not_relevant;
+	BYTE pad_2[28];
+	ScTextObject *pstc_text_obj;
+	BYTE pad_3[92];
 #endif
 };
 
@@ -167,9 +167,9 @@ ScOSIVariant* __cdecl hOSIGcAreaDirector__SetLanguage(ScOSIVariant* a1, Util::Sc
 	tOSIGcAreaDirector__SetLanguage(a1, vm, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12); // do whatever it normally does
 
 	#if GAME_EDITION == BETA
-	#define GROUPINDEX 1
+		#define GROUPINDEX 1
 	#elif GAME_EDITION == ALPHA
-	#define GROUPINDEX 2
+		#define GROUPINDEX 2
 	#endif
   ScTextObject* textobj_ptr = (*pGcConversationEngine)->pstc_text_obj;
   __ScFixedString_255 new_string;
