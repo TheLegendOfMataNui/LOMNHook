@@ -7,19 +7,11 @@
 
 #include "HookMod.h"
 #include <OSIUtil.h>
-#include <Native/ScIdentifier.h>
-#include <Native/Vector.h>
 #include <LOMNAPI.h>
 #include "../minhook/include/MinHook.h"
-#include <Native/_ScBaseString.h>
 
 using namespace LOMNHook;
 using namespace LOMNHook::Native;
-
-Util::ScOSIVirtualMachine** pGcGame__sVM = (Util::ScOSIVirtualMachine**)0x0083877C;
-
-typedef Util::ScOSIVirtualMachine* (__thiscall* ScOSIVirtualMachine__Call)(Util::ScOSIVirtualMachine* __this, const char* function_name, ScOSIVariant* arg1, ScOSIVariant* arg2, ScOSIVariant* arg3, ScOSIVariant* arg4, ScOSIVariant* arg5, ScOSIVariant* arg6, ScOSIVariant* arg7, ScOSIVariant* arg8, ScOSIVariant* arg9, ScOSIVariant* arg10);
-ScOSIVirtualMachine__Call pScOSIVirtualMachine__Call = (ScOSIVirtualMachine__Call)0x0060B320;
 
 typedef void(__cdecl* GcParticle__create)();
 GcParticle__create tGcParticle__create;
@@ -33,7 +25,7 @@ struct GcToa;
 
 GcToa** GcGame__sToa = (GcToa**)0x007032B8;
 
-typedef void(__fastcall* GcToa__CleanUpEmitters)(GcToa* _this);
+typedef void(__thiscall* GcToa__CleanUpEmitters)(GcToa* _this);
 typedef void(__fastcall* GcToa__SetUpEmitters)(GcToa* _this, int a2, int a3);
 
 GcToa__CleanUpEmitters fp__GcToa__CleanUpEmitters = (GcToa__CleanUpEmitters)0x0056FB00;
@@ -46,7 +38,6 @@ void(__cdecl hGcParticle__create)(GcParticle__create) {
 void(__cdecl hGcParticle__release)(GcParticle__release) {
     tGcParticle__release();
 }
-
 
 Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Util::ScOSIVirtualMachine* vm, int toaID, void* param2, void* param3, void* param4, void* param5, void* param6, void* param7, void* param8, void* param9, void* param10) {
     DWORD oldProtect;
