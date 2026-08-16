@@ -26,9 +26,9 @@ struct GcToa;
 GcToa** GcGame__sToa = (GcToa**)0x007032B8;
 
 typedef void(__thiscall* GcToa__CleanUpEmitters)(GcToa* _this);
-typedef void(__fastcall* GcToa__SetUpEmitters)(GcToa* _this, int a2, int a3);
-
 GcToa__CleanUpEmitters fp__GcToa__CleanUpEmitters = (GcToa__CleanUpEmitters)0x0056FB00;
+
+typedef void(__thiscall* GcToa__SetUpEmitters)(GcToa* _this);
 GcToa__SetUpEmitters fp__GcToa__SetUpEmitters = (GcToa__SetUpEmitters)0x0056F3F0;
 
 void(__cdecl hGcParticle__create)(GcParticle__create) {
@@ -154,7 +154,7 @@ Native::ScOSIVariant* GcToa__CycleEmitters(Native::ScOSIVariant* result, Util::S
     VirtualProtect(replaceemitter, sizeof(char), oldProtect, &oldProtect);
 
     fp__GcToa__CleanUpEmitters(*GcGame__sToa);
-    fp__GcToa__SetUpEmitters(*GcGame__sToa, 0, 0);
+    fp__GcToa__SetUpEmitters(*GcGame__sToa);
 
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
