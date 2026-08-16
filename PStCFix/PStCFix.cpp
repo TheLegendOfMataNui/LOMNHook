@@ -145,7 +145,7 @@ struct GcConversationEngine {
 };
 
 #if GAME_EDITION == BETA
-	GcConversationEngine** pGcConversationEngine = (GcConversationEngine**)0x744860;
+	GcConversationEngine** pGcConversationEngine = (GcConversationEngine**)0x00744860;
 #elif GAME_EDITION == ALPHA
 	GcConversationEngine** pGcConversationEngine = (GcConversationEngine**)0x0062BD74;
 #endif
@@ -156,11 +156,11 @@ OSIGcAreaDirector__SetLanguage tOSIGcAreaDirector__SetLanguage;
 typedef __ScFixedString_255* (__cdecl* GcAreaDirector__GetScriptFluffString)(__ScFixedString_255* restr, int group, int index, int str);
 
 #if GAME_EDITION == BETA
-	OSIGcAreaDirector__SetLanguage pOSIGcAreaDirector__SetLanguage = (OSIGcAreaDirector__SetLanguage)0x4873D0;
-	GcAreaDirector__GetScriptFluffString pGcAreaDirector__GetScriptFluffString = (GcAreaDirector__GetScriptFluffString)0x048ACC0;
+	OSIGcAreaDirector__SetLanguage pOSIGcAreaDirector__SetLanguage = (OSIGcAreaDirector__SetLanguage)0x004873D0;
+	GcAreaDirector__GetScriptFluffString pGcAreaDirector__GetScriptFluffString = (GcAreaDirector__GetScriptFluffString)0x0048ACC0;
 #elif GAME_EDITION == ALPHA
-	OSIGcAreaDirector__SetLanguage pOSIGcAreaDirector__SetLanguage = (OSIGcAreaDirector__SetLanguage)0x46FF20;
-	GcAreaDirector__GetScriptFluffString pGcAreaDirector__GetScriptFluffString = (GcAreaDirector__GetScriptFluffString)0x472FD0;
+	OSIGcAreaDirector__SetLanguage pOSIGcAreaDirector__SetLanguage = (OSIGcAreaDirector__SetLanguage)0x0046FF20;
+	GcAreaDirector__GetScriptFluffString pGcAreaDirector__GetScriptFluffString = (GcAreaDirector__GetScriptFluffString)0x00472FD0;
 #endif
 
 ScOSIVariant* __cdecl hOSIGcAreaDirector__SetLanguage(ScOSIVariant* a1, Util::ScOSIVirtualMachine* vm, DWORD a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10, void* a11, void* a12) {
