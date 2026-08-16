@@ -78,9 +78,7 @@ struct __declspec(align(4)) __ScSLKFile_GcCinemaCharacter
     BYTE unknown[256];
 };
 
-
 typedef void ScSLOSISLKCubicSpline;
-
 
 #pragma pack(push, 4)
 struct _D3DMATRIX
@@ -278,18 +276,15 @@ struct __declspec(align(8)) GcLegoCamera
     DWORD id_1200;
 };
 
-
 struct GcToa;
 
 typedef void(__fastcall* GcLegoCamera__NewToa)(GcLegoCamera* _this, void* unused, ScIdentifier* toa_id);
 GcLegoCamera__NewToa tGcLegoCamera__NewToa;
 GcLegoCamera__NewToa pGcLegoCamera__NewToa = (GcLegoCamera__NewToa)0x00450CA0;
 
-
 void __fastcall hGcLegoCamera__NewToa(GcLegoCamera* _this, void* unused, ScIdentifier* toa_id) {
     //Original function is no longer used
 }
-
 
 Native::ScOSIVariant* GcLegoCamera__SetHeightOffset(Native::ScOSIVariant* result, Util::ScOSIVirtualMachine* vm, GcLegoCamera* camera, float height_offset, void* param3, void* param4, void* param5, void* param6, void* param7, void* param8, void* param9, void* param10) {
     // Update the camera with the given height offset
@@ -311,7 +306,6 @@ Native::ScOSIVariant* GcLegoCamera__SetCamZoomFactor(Native::ScOSIVariant* resul
     result->Payload = 0;
     return result;
 }
-
 
 class DefaultCameraHandler : public HookMod {
 public:
