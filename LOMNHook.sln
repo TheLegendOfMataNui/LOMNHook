@@ -95,13 +95,9 @@ Global
 		{7791E2E9-5457-424D-B241-61BE67468A1B}.Beta Release|x86.ActiveCfg = Beta Release|Win32
 		{7791E2E9-5457-424D-B241-61BE67468A1B}.Beta Release|x86.Build.0 = Beta Release|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Alpha Debug|x86.ActiveCfg = Alpha Debug|Win32
-		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Alpha Debug|x86.Build.0 = Alpha Debug|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Alpha Release|x86.ActiveCfg = Alpha Release|Win32
-		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Alpha Release|x86.Build.0 = Alpha Release|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Beta Debug|x86.ActiveCfg = Beta Debug|Win32
-		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Beta Debug|x86.Build.0 = Beta Debug|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Beta Release|x86.ActiveCfg = Beta Release|Win32
-		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Beta Release|x86.Build.0 = Beta Release|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Debug|x86.ActiveCfg = Alpha Debug|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Debug|x86.Build.0 = Alpha Debug|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Release|x86.ActiveCfg = Alpha Release|Win32
