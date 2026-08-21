@@ -5,11 +5,12 @@
 
 #define LOMNAPI_REVISION 2
 
+#define REBUILT 3
 #define BETA 2
 #define ALPHA 1
 
 #ifndef GAME_EDITION
-	#error "Define a game edition first with #define GAME_EDITION BETA or ALPHA"
+	#error "Define a game edition first with #define GAME_EDITION BETA, ALPHA, or REBUILT"
 #endif
 
 #ifdef LOMNAPI_IMPL

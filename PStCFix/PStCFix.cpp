@@ -107,7 +107,7 @@ struct GcConversationEditor;
 
 struct GcConversationEngine {
 	ScProcess super;
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 	BYTE byte_12;
 	BYTE pad_1[3];
 	DWORD dword_16;
@@ -144,7 +144,7 @@ struct GcConversationEngine {
 #endif
 };
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 	GcConversationEngine** pGcConversationEngine = (GcConversationEngine**)0x00744860;
 #elif GAME_EDITION == ALPHA
 	GcConversationEngine** pGcConversationEngine = (GcConversationEngine**)0x0062BD74;
@@ -155,7 +155,7 @@ OSIGcAreaDirector__SetLanguage tOSIGcAreaDirector__SetLanguage;
 
 typedef __ScFixedString_255* (__cdecl* GcAreaDirector__GetScriptFluffString)(__ScFixedString_255* restr, int group, int index, int str);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 	OSIGcAreaDirector__SetLanguage pOSIGcAreaDirector__SetLanguage = (OSIGcAreaDirector__SetLanguage)0x004873D0;
 	GcAreaDirector__GetScriptFluffString pGcAreaDirector__GetScriptFluffString = (GcAreaDirector__GetScriptFluffString)0x0048ACC0;
 #elif GAME_EDITION == ALPHA
@@ -166,7 +166,7 @@ typedef __ScFixedString_255* (__cdecl* GcAreaDirector__GetScriptFluffString)(__S
 ScOSIVariant* __cdecl hOSIGcAreaDirector__SetLanguage(ScOSIVariant* a1, Util::ScOSIVirtualMachine* vm, DWORD a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10, void* a11, void* a12) {
 	tOSIGcAreaDirector__SetLanguage(a1, vm, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12); // do whatever it normally does
 
-	#if GAME_EDITION == BETA
+	#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 		#define GROUPINDEX 1
 	#elif GAME_EDITION == ALPHA
 		#define GROUPINDEX 2
