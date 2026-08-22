@@ -5,7 +5,7 @@ using namespace LOMNHook::Native;
 
 typedef ScProcess*(*ScProcess__ctor)(ScProcess* pThis);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 ScProcess__ctor pScProcess__ctor = (ScProcess__ctor)0x004A82F0;
 ScProcess__VectorDeletingDestructor pScProcess__VectorDeletingDestructor = (ScProcess__VectorDeletingDestructor)0x004F2BE0;
 SxReferenceCountable__Free pScReferenceCountable__Free = (SxReferenceCountable__Free)0x004F2BC0;

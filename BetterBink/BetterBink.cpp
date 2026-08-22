@@ -96,7 +96,7 @@ GcPreRenderCinema__LoadCinematic tGcPreRenderCinema__LoadCinematic = nullptr;
 typedef void(__fastcall* GcPreRenderCinema__UnLoadCinematic)(GcPreRenderCinema*, void*);
 GcPreRenderCinema__UnLoadCinematic tGcPreRenderCinema__UnLoadCinematic = nullptr;
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
     IDirect3D8** pScDrawableContext__mpD3D = (IDirect3D8**)0x00738BC0;
     IDirect3DDevice8** pScDrawableContext__mD3DDevice = (IDirect3DDevice8**)0x00738BC4;
 

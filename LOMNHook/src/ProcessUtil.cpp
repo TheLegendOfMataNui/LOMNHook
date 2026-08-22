@@ -5,7 +5,7 @@ using namespace LOMNHook;
 
 typedef int(__thiscall *ScProcessManager__AddProcess)(void* pThis, Native::ScProcess* item, unsigned char priority);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 	void** gProcessManager = (void**)0x00712D90;
 	ScProcessManager__AddProcess pScProcessManager__AddProcess = (ScProcessManager__AddProcess)0x004A8F50; // Orig
 #elif GAME_EDITION == ALPHA

@@ -1,7 +1,7 @@
 // CinemaPositionEnabler.cpp : Defines the exported functions for the DLL application.
 //
 
-#define GAME_EDITION BETA
+#define GAME_EDITION REBUILT
 
 #include "stdafx.h"
 

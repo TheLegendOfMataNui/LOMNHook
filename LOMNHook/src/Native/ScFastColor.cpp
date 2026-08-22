@@ -4,7 +4,7 @@
 
 using namespace LOMNHook::Native;
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 ScFastColor__vtbl* pScFastColor__vtbl = (ScFastColor__vtbl*)0x0070C438;
 #elif GAME_EDITION == ALPHA
 ScFastColor__vtbl* pScFastColor__vtbl = (ScFastColor__vtbl*)0x00614738;

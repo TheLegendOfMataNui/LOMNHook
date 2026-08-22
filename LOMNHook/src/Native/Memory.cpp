@@ -6,7 +6,7 @@
 typedef void*(__cdecl *SrMalloc)(unsigned int);
 typedef void(__cdecl *SrFree)(void*);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
     static SrMalloc pSrMalloc = (SrMalloc)0x004E4350;
     static SrFree pSrFree = (SrFree)0x004E43B0;
 #elif GAME_EDITION == ALPHA

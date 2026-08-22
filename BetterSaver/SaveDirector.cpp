@@ -19,7 +19,7 @@ typedef SxReferenceCountable* (__cdecl* GcAreaDirector__Get)(ScIdentifier*);
 typedef ScIdentifier* (__thiscall* GcAreaLoader__RemoveObject)(void*, ScIdentifier*);
 typedef void(__cdecl* GcSaver__SetQuest)(unsigned char, char);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 	char** pGcSaver__sPathString = (char**)0x00838CF0;
 	unsigned char* pGcSaver__sLevel = (unsigned char*)0x0074748C;
 	ScIdentifier* pGcSaver__sArea = (ScIdentifier*)0x00747490;
@@ -277,7 +277,7 @@ namespace SaveDirector {
 		for (int i = 0; i < 6; i++)
 			if ((pGcSaver__sQuests)[i] != 0)
 				SaveQuest(questsElement, "quest", i, (pGcSaver__sQuests)[i]);
-		#if GAME_EDITION == BETA
+		#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 			// Mask Flags
 			SaveInt(saveNode, "maskflags", *pGcSaver__sMaskNums);
 
@@ -463,7 +463,7 @@ namespace SaveDirector {
 			unsigned int l = quest.attribute("level").as_uint();
 			pGcSaver__sQuests[l] = quest.attribute("value").as_uint();
 		}
-		#if GAME_EDITION == BETA
+		#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 			// Mask Flags
 			*pGcSaver__sMaskNums = saveNode.child("maskflags").text().as_uint();
 

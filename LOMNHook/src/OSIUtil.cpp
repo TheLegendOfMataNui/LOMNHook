@@ -8,7 +8,7 @@ using namespace LOMNHook::Util;
 
 typedef void(__thiscall *ScOSISystem__RegisterFunction)(ScOSISystem*, _ScBaseString*, _ScBaseString*, OSIFunctionCallback, char, char, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID, ScOSITypeID);
 
-#if GAME_EDITION == BETA
+#if GAME_EDITION == BETA or GAME_EDITION == REBUILT
 ScOSISystem** LOMNHook::Util::ScGlobalOSISystem__theOSISystem = (void**)0x0074D644;
 ScOSISystem__RegisterFunction pScOSISystem__RegisterFunction = (ScOSISystem__RegisterFunction)0x005FAB30;
 #elif GAME_EDITION == ALPHA
