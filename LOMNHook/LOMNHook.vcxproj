@@ -104,7 +104,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\..\LOMN-Rebuilt\build\</OutDir>
+    <OutDir>..\..\LOMN-Beta-Legacy\build\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
