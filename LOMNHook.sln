@@ -106,7 +106,6 @@ Global
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Beta Release|x86.ActiveCfg = Beta Release|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Rebuilt Debug|x86.ActiveCfg = Rebuilt Debug|Win32
 		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Rebuilt Release|x86.ActiveCfg = Rebuilt Release|Win32
-		{263F0023-F5E9-44CE-A06B-E9E23C2F142F}.Rebuilt Release|x86.Build.0 = Rebuilt Release|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Debug|x86.ActiveCfg = Alpha Debug|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Debug|x86.Build.0 = Alpha Debug|Win32
 		{108C0C76-5BC1-4FB4-911C-A91C8125DD5B}.Alpha Release|x86.ActiveCfg = Alpha Release|Win32
