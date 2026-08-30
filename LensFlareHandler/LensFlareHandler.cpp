@@ -61,6 +61,7 @@ GcSprite__SetMiddle pGcSprite__SetMiddle = (GcSprite__SetMiddle)0x0052A300;
 typedef void(__fastcall* GcSprite__EnableAlphaChannel)(GcSprite* _this, void* edx, bool a2);
 GcSprite__EnableAlphaChannel pGcSprite__EnableAlphaChannel = (GcSprite__EnableAlphaChannel)0x00529770;
 
+//Yoink the AreaID directly from memory 
 static ScIdentifier* GcAreaDirector__sCurAreaID = (ScIdentifier*)0x0083B0B4;
 
 //Setting up our hook of GcArea::Render
@@ -80,7 +81,7 @@ int __fastcall hGcArea__Render(GcArea* _this) {
 Native::ScOSIVariant* GcArea__CreateSunFlare(Native::ScOSIVariant* result, Util::ScOSIVirtualMachine* vm, void* param1, void* param2, void* param3, void* param4, void* param5, void* param6, void* param7, void* param8, void* param9, void* param10) {
     //Setup for our first set of sun flare sprites
     //First we need to set up a variable to store the sprite path as a string (we will call the child of ScFixedString later)
-    ScFixedString<128> sprite_00_path("Root/Data/Art/particles/Lensflare12.tga");
+    ScFixedString<64> sprite_00_path("Root/Data/Art/particles/Lensflare12.tga");
     //Now create a variable for our sprite handle (hence the GcSprite* type), and call SrMalloc via our includes and allocate 0x228 bytes of memory for this 
     GcSprite* sprite_00 = (GcSprite*)SrMalloc(0x228);
     //Call the GcSprite constructor now, and pass the handle, edx (0), coordinate floats, and then the pointer to our sprite path, which we then call then child .Base (_ScBaseString)
