@@ -158,17 +158,6 @@ Native::ScOSIVariant* GcArea__CreateSunFlare(Native::ScOSIVariant* result, Util:
     sunflare_id_13.AsDWORD = 'l103';
     pGcNoLightDirector__AddSprite(sprite_13, &sunflare_id_13, GcAreaDirector__sCurAreaID);
 
-
-
-    //GcNoLightDirector::AddSprite(sprite_10, 'l100', area_id);
-    //GcNoLightDirector::AddSprite(sprite_11, 'l101', area_id);
-    //GcNoLightDirector::AddSprite(sprite_12, 'l102', area_id);
-    //GcNoLightDirector::AddSprite(sprite_13, 'l103', area_id);
-
-
-
-
-
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
     return result;
