@@ -8,7 +8,6 @@
 #include "HookMod.h"
 #include <OSIUtil.h>
 #include <Native/ScIdentifier.h>
-#include <LOMNAPI.h>
 #include "../minhook/include/MinHook.h"
 
 using namespace LOMNHook;

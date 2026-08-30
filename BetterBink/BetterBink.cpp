@@ -2,11 +2,8 @@
 
 #include "HookMod.h"
 #include <OSIUtil.h>
-#include <Native/StRGBABytes.h>
-#include <Native/ScFastColor.h>
 #include <Native/ScIdentifier.h>
 #include <Native/ScProcess.h>
-#include <LOMNAPI.h>
 #include "../minhook/include/MinHook.h"
 
 #include "dx8\d3d8.h"

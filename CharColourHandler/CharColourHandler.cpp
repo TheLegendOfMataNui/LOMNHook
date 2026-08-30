@@ -11,7 +11,6 @@
 #include <Native/ScFastColor.h>
 #include <Native/ScIdentifier.h>
 #include <Native/Vector.h>
-#include <LOMNAPI.h>
 
 using namespace LOMNHook;
 using namespace LOMNHook::Native;

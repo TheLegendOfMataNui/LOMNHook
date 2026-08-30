@@ -162,8 +162,10 @@ Global
 		{AD664511-C46C-438B-948B-3BFC5AED54E9}.Rebuilt Release|x86.Build.0 = Rebuilt Release|Win32
 		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Alpha Debug|x86.ActiveCfg = Rebuilt Release|Win32
 		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Alpha Release|x86.ActiveCfg = Rebuilt Release|Win32
-		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Debug|x86.ActiveCfg = Rebuilt Release|Win32
-		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Release|x86.ActiveCfg = Rebuilt Release|Win32
+		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Debug|x86.ActiveCfg = Beta Debug|Win32
+		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Debug|x86.Build.0 = Beta Debug|Win32
+		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Release|x86.ActiveCfg = Beta Release|Win32
+		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Beta Release|x86.Build.0 = Beta Release|Win32
 		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Rebuilt Debug|x86.ActiveCfg = Rebuilt Debug|Win32
 		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Rebuilt Debug|x86.Build.0 = Rebuilt Debug|Win32
 		{57C597E6-1982-4C09-9AA8-497806ECDF13}.Rebuilt Release|x86.ActiveCfg = Rebuilt Release|Win32

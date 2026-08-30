@@ -9,7 +9,6 @@
 #include <OSIUtil.h>
 #include <Native/ScIdentifier.h>
 #include <Native/Vector.h>
-#include <LOMNAPI.h>
 #include "../minhook/include/MinHook.h"
 
 using namespace LOMNHook;
