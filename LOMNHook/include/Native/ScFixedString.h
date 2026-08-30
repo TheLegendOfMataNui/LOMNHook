@@ -5,6 +5,7 @@ namespace LOMNHook {
     namespace Native {
         template <int Length>
         class ScFixedString {
+        public:
             _ScBaseString Base;
             int MaxLength;
             char Buffer[Length];
@@ -19,6 +20,8 @@ namespace LOMNHook {
                     throw 1; // Too long!
                 }
                 memcpy(this->Buffer, data, length + 1);
+                this->Base.Length = length;
+                this->Base.Data = this->Buffer;
             }
         };
     }
