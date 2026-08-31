@@ -31,7 +31,6 @@ struct __declspec(align(4)) SxReferenceCountable
     int count;
 };
 
-
 //IDA sees this as without a type because 'this' is not actually used in the GcArea::SunFlare function.  Ghidra doesn't do this shortcutting, so declares it as a __thiscall
 //Here we will still __thiscall  
 typedef void(__thiscall* GcArea__SunFlare)(GcArea* _this);
@@ -162,7 +161,6 @@ Native::ScOSIVariant* GcArea__CreateSunFlare(Native::ScOSIVariant* result, Util:
     result->Payload = 0;
     return result;
 }
-
 
 //Set up our script command for positioning sun flares
 Native::ScOSIVariant* GcArea__PositionSunFlare(Native::ScOSIVariant* result, Util::ScOSIVirtualMachine* vm, float sun_1_x, float sun_1_y, float sun_1_z, float sun_2_x, float sun_2_y, float sun_2_z, void* param7, void* param8, void* param9, void* param10) {
