@@ -80,6 +80,9 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
     <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -103,21 +106,21 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\LOMN-Beta-Legacy\build\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Debug|Win32'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\LOMN-Rebuilt\build\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\LOMN-Alpha\build\</OutDir>
     <TargetName>ijl15</TargetName>
     <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
@@ -137,6 +140,13 @@
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
+    <TargetName>ijl15</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IncludePath>$(ProjectDir)include\;$(ProjectDir)src\;$(SolutionDir)minhook\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -146,7 +156,7 @@
       <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=BETA;_DEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,10 +172,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=BETA;_DEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=REBUILT;_DEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,7 +194,7 @@
       <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=ALPHA;_DEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -205,13 +215,13 @@
       <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=BETA;NDEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(PlatformTarget).lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -228,17 +238,38 @@
       <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=ALPHA;NDEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
       <AdditionalDependencies>libMinHook.$(PlatformTarget).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
+    <Link>
+      <AdditionalDependencies>libMinHook.$(PlatformTarget).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>src\ijl15.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)ijl15$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>PUGIXML_API=__declspec(dllexport);WIN32;GAME_EDITION=REBUILT;NDEBUG;LOMNHOOK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\HookMod.h" />
@@ -280,6 +311,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Alpha Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

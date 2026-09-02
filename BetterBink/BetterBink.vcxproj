@@ -127,6 +127,9 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
     <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -166,20 +169,20 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <OutDir>..\..\LOMN-Alpha\build\mods</OutDir>
+    <OutDir>..\..\LOMN-Alpha\build\mods\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\LOMN-Beta-Legacy\build\mods\</OutDir>
-    <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\LOMN-Rebuilt\build\mods\</OutDir>
-    <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|x64'">
@@ -193,20 +196,26 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\mods\</OutDir>
-    <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\mods\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\mods\</OutDir>
-    <IncludePath>$(SolutionDir)LOMNHook\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\mods\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Beta Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\mods\</OutDir>
+    <LibraryPath>$(SolutionDir)lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)LOMNHook\include;</IncludePath>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Alpha Debug|Win32'">
@@ -218,11 +227,12 @@
       <PreprocessorDefinitions>WIN32;GAME_EDITION=ALPHA;_DEBUG;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <EnableUAC>true</EnableUAC>
       <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -235,11 +245,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;GAME_EDITION=BETA;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <EnableUAC>true</EnableUAC>
       <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -249,14 +260,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;GAME_EDITION=BETA;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;GAME_EDITION=REBUILT;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <EnableUAC>true</EnableUAC>
       <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -319,13 +331,14 @@
       <PreprocessorDefinitions>WIN32;GAME_EDITION=ALPHA;NDEBUG;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
       <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -340,13 +353,14 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;GAME_EDITION=BETA;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
       <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -390,6 +404,26 @@
       <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">
+    <Link>
+      <AdditionalDependencies>libMinHook.$(ProcessorArchitecture).lib;$(OutDir)..\ijl15.lib;$(ProjectDir)bink\binkw32.lib;$(ProjectDir)dx8\d3d8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;GAME_EDITION=REBUILT;NDEBUG;BETTERBINK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="bink\bink.h" />
     <ClInclude Include="bink\rad3d.h" />
@@ -416,6 +450,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Beta Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Alpha Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Beta Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Rebuilt Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
