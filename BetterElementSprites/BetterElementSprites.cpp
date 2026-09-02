@@ -7,8 +7,8 @@
 
 #include "HookMod.h"
 #include <OSIUtil.h>
-#include <LOMNAPI.h>
 #include "../minhook/include/MinHook.h"
+#include <Native/ScFixedString.h>
 
 using namespace LOMNHook;
 using namespace LOMNHook::Native;
@@ -131,14 +131,38 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     //----------------------------------------------------------------------------------------------------------------
 
     //Ammo Pickups
+    //NOTE: To replace these we must do so using memory addresses from GcPositionLoader when it loads the pickups in the POS.slb file
+    //These strings are ScFixedString<64> types, so we must do this nonsense to overwrite them.  We dont need virtual protect due to this segment not being initialized
 
-    //Onua Ammo Pickups (TEST)
-    const char* onuaammo = "Root/data/art/hud/elemrotate/hppybllbonua";
-    const char** replaceammoonua = (const char**)(0x005035A3 + 1);
-    VirtualProtect(replaceammoonua, sizeof(replaceammoonua), PAGE_EXECUTE_READWRITE, &oldProtect);
-    *replaceammoonua = onuaammo;
-    VirtualProtect(replaceammoonua, sizeof(replaceammoonua), oldProtect, &oldProtect);
+    if (toaID == 1) {
+        //Onua Ammo Pickups (POS.slb) [we use toaID because onua is the default case, which lewa uses]
+        ScFixedString<64> onua_ammo("Root/data/art/hud/elemrotate/hppybllonua");
+        ScFixedString<64>* replace_ammo_onua = (ScFixedString<64>*)(0x007B7178); //correct address
+        for (int i = 0; i < onua_ammo.Base.Length; i++) {
+            replace_ammo_onua->Buffer[i] = onua_ammo.Buffer[i];
+        }
+        replace_ammo_onua->Base.Length = onua_ammo.Base.Length;
+    }
 
+    if (toaID == 5) {
+        //Lewa Ammo Pickups (POS.slb) [hook the same address as onua due to both using the default case]
+        ScFixedString<64> lewa_ammo("Root/data/art/hud/elemrotate/hppyblllewa");
+        ScFixedString<64>* replace_ammo_lewa = (ScFixedString<64>*)(0x007B7178); //correct address
+        for (int i = 0; i < lewa_ammo.Base.Length; i++) {
+            replace_ammo_lewa->Buffer[i] = lewa_ammo.Buffer[i];
+        }
+        replace_ammo_lewa->Base.Length = lewa_ammo.Base.Length;
+    }
+
+    if (toaID == 6) {
+        //Tahu Ammo Pickups (POS.slb)
+        ScFixedString<64> tahu_ammo("Root/data/art/hud/elemrotate/hppyblltahu");
+        ScFixedString<64>* replace_ammo_tahu = (ScFixedString<64>*)(0x007B6FAC); //correct address
+        for (int i = 0; i < tahu_ammo.Base.Length; i++) {
+            replace_ammo_tahu->Buffer[i] = tahu_ammo.Buffer[i];
+        }
+        replace_ammo_tahu->Base.Length = tahu_ammo.Base.Length;
+    }
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
     return result;
