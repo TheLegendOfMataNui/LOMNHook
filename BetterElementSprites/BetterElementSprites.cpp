@@ -135,64 +135,121 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     //These strings are ScFixedString<64> types, so we must do this nonsense to overwrite them.  We dont need virtual protect due to this segment not being initialized
 
     if (toaID == 1) {
-        //Onua Ammo Pickups (POS.slb) [we use toaID because onua is the default case, which lewa uses]
+        //Onua POS.slb Ammo Pickups [we use toaID because onua is the default case, which lewa uses]
         ScFixedString<64> onua_ammo("Root/data/art/hud/elemrotate/hppybllonua");
-        ScFixedString<64>* replace_ammo_onua = (ScFixedString<64>*)(0x007B7178); //correct address
+        ScFixedString<64>* replace_ammo_onua = (ScFixedString<64>*)(0x007B7178); 
         for (int i = 0; i < onua_ammo.Base.Length; i++) {
             replace_ammo_onua->Buffer[i] = onua_ammo.Buffer[i];
         }
         replace_ammo_onua->Base.Length = onua_ammo.Base.Length;
+     
+        //Onua rewards Ammo Pickups  
+        ScFixedString<64> onua_ammo_reward("Root/data/art/hud/elemrotate/hppybllonua");
+        ScFixedString<64>* replace_ammo_onua_reward = (ScFixedString<64>*)(0x007ECDC0);
+        for (int i = 0; i < onua_ammo_reward.Base.Length; i++) {
+            replace_ammo_onua_reward->Buffer[i] = onua_ammo_reward.Buffer[i];
+        }
+        replace_ammo_onua_reward->Base.Length = onua_ammo_reward.Base.Length;
     }
 
     if (toaID == 2) {
-        //Gali Ammo Pickups (POS.slb)
+        //Gali POS.slb Ammo Pickups 
         ScFixedString<64> gali_ammo("Root/data/art/hud/elemrotate/hppybllgali");
         ScFixedString<64>* replace_ammo_gali = (ScFixedString<64>*)(0x007B711C);
         for (int i = 0; i < gali_ammo.Base.Length; i++) {
             replace_ammo_gali->Buffer[i] = gali_ammo.Buffer[i];
         }
         replace_ammo_gali->Base.Length = gali_ammo.Base.Length;
+
+        //Gali rewards Ammo Pickups 
+        ScFixedString<64> gali_ammo_reward("Root/data/art/hud/elemrotate/hppybllgali");
+        ScFixedString<64>* replace_ammo_gali_reward = (ScFixedString<64>*)(0x007ECD64);
+        for (int i = 0; i < gali_ammo_reward.Base.Length; i++) {
+            replace_ammo_gali_reward->Buffer[i] = gali_ammo_reward.Buffer[i];
+        }
+        replace_ammo_gali_reward->Base.Length = gali_ammo_reward.Base.Length;
     }
 
     if (toaID == 3) {
-        //Pohatu Ammo Pickups (POS.slb)
+        //Pohatu POS.slb Ammo Pickups 
         ScFixedString<64> pohatu_ammo("Root/data/art/hud/elemrotate/hppybllpohatu");
         ScFixedString<64>* replace_ammo_pohatu = (ScFixedString<64>*)(0x007B70C0);
         for (int i = 0; i < pohatu_ammo.Base.Length; i++) {
             replace_ammo_pohatu->Buffer[i] = pohatu_ammo.Buffer[i];
         }
         replace_ammo_pohatu->Base.Length = pohatu_ammo.Base.Length;
+
+        //Pohatu rewards Ammo Pickups 
+        ScFixedString<64> pohatu_ammo_reward("Root/data/art/hud/elemrotate/hppybllpohatu");
+        ScFixedString<64>* pohatu_ammo_pohatu_reward = (ScFixedString<64>*)(0x007ECD08);
+        for (int i = 0; i < pohatu_ammo_reward.Base.Length; i++) {
+            pohatu_ammo_pohatu_reward->Buffer[i] = pohatu_ammo_reward.Buffer[i];
+        }
+        pohatu_ammo_pohatu_reward->Base.Length = pohatu_ammo_reward.Base.Length;
     }
 
     if (toaID == 4) {
-        //Kopaka Ammo Pickups (POS.slb)
+        //Kopaka POS.slb Ammo Pickups 
         ScFixedString<64> kopaka_ammo("Root/data/art/hud/elemrotate/hppybllkopaka");
         ScFixedString<64>* replace_ammo_kopaka = (ScFixedString<64>*)(0x007B7064);
         for (int i = 0; i < kopaka_ammo.Base.Length; i++) {
             replace_ammo_kopaka->Buffer[i] = kopaka_ammo.Buffer[i];
         }
         replace_ammo_kopaka->Base.Length = kopaka_ammo.Base.Length;
+
+        //Kopaka rewards Ammo Pickups 
+        ScFixedString<64> kopaka_ammo_reward("Root/data/art/hud/elemrotate/hppybllkopaka");
+        ScFixedString<64>* replace_ammo_kopaka_reward = (ScFixedString<64>*)(0x007ECCAC);
+        for (int i = 0; i < kopaka_ammo_reward.Base.Length; i++) {
+            replace_ammo_kopaka_reward->Buffer[i] = kopaka_ammo_reward.Buffer[i];
+        }
+        replace_ammo_kopaka_reward->Base.Length = kopaka_ammo_reward.Base.Length;
     }
 
     if (toaID == 5) {
-        //Lewa Ammo Pickups (POS.slb) [hook the same address as onua due to both using the default case]
+        //Lewa POS.slb Ammo Pickups [hook the same address as onua due to both using the default case]
         ScFixedString<64> lewa_ammo("Root/data/art/hud/elemrotate/hppyblllewa");
-        ScFixedString<64>* replace_ammo_lewa = (ScFixedString<64>*)(0x007B7178); //correct address
+        ScFixedString<64>* replace_ammo_lewa = (ScFixedString<64>*)(0x007B7178); 
         for (int i = 0; i < lewa_ammo.Base.Length; i++) {
             replace_ammo_lewa->Buffer[i] = lewa_ammo.Buffer[i];
         }
         replace_ammo_lewa->Base.Length = lewa_ammo.Base.Length;
+
+        //Lewa rewards Ammo Pickups 
+        ScFixedString<64> lewa_ammo_reward("Root/data/art/hud/elemrotate/hppyblllewa");
+        ScFixedString<64>* replace_ammo_lewa_reward = (ScFixedString<64>*)(0x007ECDC0);
+        for (int i = 0; i < lewa_ammo_reward.Base.Length; i++) {
+            replace_ammo_lewa_reward->Buffer[i] = lewa_ammo_reward.Buffer[i];
+        }
+        replace_ammo_lewa_reward->Base.Length = lewa_ammo_reward.Base.Length;
     }
 
     if (toaID == 6) {
-        //Tahu Ammo Pickups (POS.slb)
+        //Tahu POS.slb Ammo Pickups 
         ScFixedString<64> tahu_ammo("Root/data/art/hud/elemrotate/hppyblltahu");
-        ScFixedString<64>* replace_ammo_tahu = (ScFixedString<64>*)(0x007B6FAC); //correct address
+        ScFixedString<64>* replace_ammo_tahu = (ScFixedString<64>*)(0x007B6FAC); 
         for (int i = 0; i < tahu_ammo.Base.Length; i++) {
             replace_ammo_tahu->Buffer[i] = tahu_ammo.Buffer[i];
         }
         replace_ammo_tahu->Base.Length = tahu_ammo.Base.Length;
+
+        //Tahu rewards Ammo Pickups
+        ScFixedString<64> tahu_ammo_reward("Root/data/art/hud/elemrotate/hppyblltahu");
+        ScFixedString<64>* pohatu_ammo_tahu_reward = (ScFixedString<64>*)(0x007ECBF4);
+        for (int i = 0; i < tahu_ammo_reward.Base.Length; i++) {
+            pohatu_ammo_tahu_reward->Buffer[i] = tahu_ammo_reward.Buffer[i];
+        }
+        pohatu_ammo_tahu_reward->Base.Length = tahu_ammo_reward.Base.Length;
     }
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+    //Token Pickups
+    //NOTE: To replace these we must do so using the memory address from GcPositionLoader when it loads the pickups in the POS.slb file
+    //These strings are ScFixedString<64> types, so we must do this nonsense to overwrite them.  We dont need virtual protect due to this segment not being initialized
+
+
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
     return result;
