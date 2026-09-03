@@ -144,6 +144,36 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
         replace_ammo_onua->Base.Length = onua_ammo.Base.Length;
     }
 
+    if (toaID == 2) {
+        //Gali Ammo Pickups (POS.slb)
+        ScFixedString<64> gali_ammo("Root/data/art/hud/elemrotate/hppybllgali");
+        ScFixedString<64>* replace_ammo_gali = (ScFixedString<64>*)(0x007B711C);
+        for (int i = 0; i < gali_ammo.Base.Length; i++) {
+            replace_ammo_gali->Buffer[i] = gali_ammo.Buffer[i];
+        }
+        replace_ammo_gali->Base.Length = gali_ammo.Base.Length;
+    }
+
+    if (toaID == 3) {
+        //Pohatu Ammo Pickups (POS.slb)
+        ScFixedString<64> pohatu_ammo("Root/data/art/hud/elemrotate/hppybllpohatu");
+        ScFixedString<64>* replace_ammo_pohatu = (ScFixedString<64>*)(0x007B70C0);
+        for (int i = 0; i < pohatu_ammo.Base.Length; i++) {
+            replace_ammo_pohatu->Buffer[i] = pohatu_ammo.Buffer[i];
+        }
+        replace_ammo_pohatu->Base.Length = pohatu_ammo.Base.Length;
+    }
+
+    if (toaID == 4) {
+        //Kopaka Ammo Pickups (POS.slb)
+        ScFixedString<64> kopaka_ammo("Root/data/art/hud/elemrotate/hppybllkopaka");
+        ScFixedString<64>* replace_ammo_kopaka = (ScFixedString<64>*)(0x007B7064);
+        for (int i = 0; i < kopaka_ammo.Base.Length; i++) {
+            replace_ammo_kopaka->Buffer[i] = kopaka_ammo.Buffer[i];
+        }
+        replace_ammo_kopaka->Base.Length = kopaka_ammo.Base.Length;
+    }
+
     if (toaID == 5) {
         //Lewa Ammo Pickups (POS.slb) [hook the same address as onua due to both using the default case]
         ScFixedString<64> lewa_ammo("Root/data/art/hud/elemrotate/hppyblllewa");
