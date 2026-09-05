@@ -309,6 +309,16 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
         replace_token_tahu->Base.Length = tahu_token.Base.Length;
     }
 
+    if (toaID == 8) {
+        //Nobua Token Pickups 
+        ScFixedString<64> nobua_token("Root/data/art/pickups/nobuatoken/nobua_token");
+        ScFixedString<64>* replace_token_nobua = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < nobua_token.Base.Length; i++) {
+            replace_token_nobua->Buffer[i] = nobua_token.Buffer[i];
+        }
+        replace_token_nobua->Base.Length = nobua_token.Base.Length;
+    }
+
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
     return result;
