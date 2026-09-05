@@ -235,11 +235,11 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
 
         //Tahu rewards Ammo Pickups
         ScFixedString<64> tahu_ammo_reward("Root/data/art/hud/elemrotate/hppyblltahu");
-        ScFixedString<64>* pohatu_ammo_tahu_reward = (ScFixedString<64>*)(0x007ECBF4);
+        ScFixedString<64>* replace_ammo_tahu_reward = (ScFixedString<64>*)(0x007ECBF4);
         for (int i = 0; i < tahu_ammo_reward.Base.Length; i++) {
-            pohatu_ammo_tahu_reward->Buffer[i] = tahu_ammo_reward.Buffer[i];
+            replace_ammo_tahu_reward->Buffer[i] = tahu_ammo_reward.Buffer[i];
         }
-        pohatu_ammo_tahu_reward->Base.Length = tahu_ammo_reward.Base.Length;
+        replace_ammo_tahu_reward->Base.Length = tahu_ammo_reward.Base.Length;
     }
 
     //----------------------------------------------------------------------------------------------------------------
@@ -249,6 +249,65 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
     //NOTE: To replace these we must do so using the memory address from GcPositionLoader when it loads the pickups in the POS.slb file
     //These strings are ScFixedString<64> types, so we must do this nonsense to overwrite them.  We dont need virtual protect due to this segment not being initialized
 
+    if (toaID == 1) {
+        //Onua Token Pickups [we use toaID because onua is the default case, which lewa uses]
+        ScFixedString<64> onua_token("Root/data/art/pickups/onuatoken/onua_token");
+        ScFixedString<64>* replace_token_onua = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < onua_token.Base.Length; i++) {
+            replace_token_onua->Buffer[i] = onua_token.Buffer[i];
+        }
+        replace_token_onua->Base.Length = onua_token.Base.Length;
+    }
+
+    if (toaID == 2) {
+        //Gali Token Pickups 
+        ScFixedString<64> gali_token("Root/data/art/pickups/galitoken/gali_token");
+        ScFixedString<64>* replace_token_gali = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < gali_token.Base.Length; i++) {
+            replace_token_gali->Buffer[i] = gali_token.Buffer[i];
+        }
+        replace_token_gali->Base.Length = gali_token.Base.Length;
+    }
+
+    if (toaID == 3) {
+        //Pohatu Token Pickups 
+        ScFixedString<64> pohatu_token("Root/data/art/pickups/pohatoken/poha_token");
+        ScFixedString<64>* replace_token_pohatu = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < pohatu_token.Base.Length; i++) {
+            replace_token_pohatu->Buffer[i] = pohatu_token.Buffer[i];
+        }
+        replace_token_pohatu->Base.Length = pohatu_token.Base.Length;
+    }
+
+    if (toaID == 4) {
+        //Kopaka Token Pickups 
+        ScFixedString<64> kopaka_token("Root/data/art/pickups/kopatoken/kopa_token");
+        ScFixedString<64>* replace_token_kopaka = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < kopaka_token.Base.Length; i++) {
+            replace_token_kopaka->Buffer[i] = kopaka_token.Buffer[i];
+        }
+        replace_token_kopaka->Base.Length = kopaka_token.Base.Length;
+    }
+
+    if (toaID == 5) {
+        //Lewa Token Pickups [hook the same address as onua due to both using the default case]
+        ScFixedString<64> lewa_token("Root/data/art/pickups/lewatoken/lewa_token");
+        ScFixedString<64>* replace_token_lewa = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < lewa_token.Base.Length; i++) {
+            replace_token_lewa->Buffer[i] = lewa_token.Buffer[i];
+        }
+        replace_token_lewa->Base.Length = lewa_token.Base.Length;
+    }
+
+    if (toaID == 6) {
+        //Tahu Token Pickups 
+        ScFixedString<64> tahu_token("Root/data/art/pickups/tahutoken/tahu_token");
+        ScFixedString<64>* replace_token_tahu = (ScFixedString<64>*)(0x007B7344);
+        for (int i = 0; i < tahu_token.Base.Length; i++) {
+            replace_token_tahu->Buffer[i] = tahu_token.Buffer[i];
+        }
+        replace_token_tahu->Base.Length = tahu_token.Base.Length;
+    }
 
     result->TypeID = LOMNHook::Native::VARIANT_NULL;
     result->Payload = 0;
