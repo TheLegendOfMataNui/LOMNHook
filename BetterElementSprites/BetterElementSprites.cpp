@@ -309,7 +309,7 @@ Native::ScOSIVariant* GcToa__SetElementSprites(Native::ScOSIVariant* result, Uti
         replace_token_tahu->Base.Length = tahu_token.Base.Length;
     }
 
-    if (toaID == 8) {
+    if (toaID == 9) {
         //Nobua Token Pickups 
         ScFixedString<64> nobua_token("Root/data/art/pickups/nobuatoken/nobua_token");
         ScFixedString<64>* replace_token_nobua = (ScFixedString<64>*)(0x007B7344);
