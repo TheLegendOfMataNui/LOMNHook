@@ -264,7 +264,7 @@ namespace SaveDirector {
 
 		// Conversation Memory
 		xml_node conversationsElement = saveNode.append_child("conversations");
-		for (int i = 0; i < pGcSaver__sConvMemory->Count; i++)
+		for (unsigned int i = 0; i < pGcSaver__sConvMemory->Count; i++)
 			SaveConversationData(conversationsElement, "conversation", pGcSaver__sConvMemory->Data[i]);
 
 		// Times
@@ -528,7 +528,7 @@ namespace SaveDirector {
 		void* areaLoader = pGcAreaDirector__Get(pGcSaver__sArea);
 		if (areaLoader != nullptr) {
 			// Remove collected tokens
-			for (int i = 0; i < Tokens.size(); i++) {
+			for (unsigned int i = 0; i < Tokens.size(); i++) {
 				if (Tokens[i].AreaID.AsDWORD == pGcSaver__sArea->AsDWORD) {
 					// Remove the ID twice - one for the model, one for the collision (or something like that)
 					for (int j = 0; j < 2; j++)

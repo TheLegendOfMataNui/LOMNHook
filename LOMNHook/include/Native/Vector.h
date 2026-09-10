@@ -26,7 +26,6 @@ LOMNHook::Native::Vector<T>::Vector(int initialCount)
 {
 	Count = 0;
 	AllocatedCount = initialCount;
-	//Data = (T*)operator new(initialCount * sizeof(T));
     Data = (T*)SrMalloc(sizeof(T) * initialCount);
 }
 
@@ -40,7 +39,7 @@ void LOMNHook::Native::Vector<T>::PushBack(T value)
 			newCapacity = 1;
 
 		this->Data = (T*)SrMalloc(sizeof(T) * newCapacity);
-		for (int i = 0; i < this->Count; i++)
+		for (unsigned int i = 0; i < this->Count; i++)
 			this->Data[i] = oldData[i];
 
 		this->AllocatedCount = newCapacity;

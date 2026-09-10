@@ -7,7 +7,7 @@ namespace LOMNHook {
         class ScFixedString {
         public:
             _ScBaseString Base;
-            int MaxLength;
+            unsigned int MaxLength;
             char Buffer[Length];
 
             ScFixedString() : Base(), MaxLength(Length) {

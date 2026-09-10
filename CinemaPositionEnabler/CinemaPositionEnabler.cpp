@@ -341,7 +341,7 @@ void __fastcall hGcCinemaCharacter__InitCharacters(__ScSLKFile_GcCinemaCharacter
     tGcCinemaCharacter__InitCharacters(_this, unused);
 
     // Loop through each character in the SLK file
-    for (int i = 0; i < _this->count; i++) {
+    for (unsigned int i = 0; i < _this->count; i++) {
         // Get character at index i
         GcCharacter* character = (GcCharacter*)pGcModelDirector__Get(&_this->entries[i].anim_hierarchy);
 
