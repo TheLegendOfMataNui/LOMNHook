@@ -262,11 +262,22 @@ typedef struct _IJLibVersion
 // Return a pointer to a string with error description.
 //const char* ijlErrorStr(IJLERR code);
 
-typedef IJLERR(*_ijlInit)(void* jcprops); // jcprops is JPEG_CORE_PROPERTIES*
-
+typedef IJLERR (_stdcall *_ijlInit)(void* jcprops); // jcprops is JPEG_CORE_PROPERTIES*
 _ijlInit Native_ijlInit = nullptr;
 
-IJLibVersion LibVersion = { 1, 5, 4, "LOMNHook IJL Shim", "1.5.4", "1.5.4", "May 24 2018", "Microsoft*" };
+typedef IJLERR (_stdcall *_ijlFree)(void* jcprops);
+_ijlFree Native_ijlFree = nullptr;
+
+typedef IJLERR(_stdcall *_ijlRead)(void* jcprops, IJLIOTYPE iotype);
+_ijlRead Native_ijlRead = nullptr;
+
+typedef IJLERR(_stdcall *_ijlWrite)(void* jcprops, IJLIOTYPE iotype);
+_ijlWrite Native_ijlWrite = nullptr;
+
+const IJLibVersion LibVersion = { 1, 5, 4, "LOMNHook IJL Shim", "1.5.4", "1.5.4", "May 24 2018", "Microsoft*" };
+
+typedef const char*(_stdcall *_ijlErrorStr)(IJLERR code);
+_ijlErrorStr Native_ijlErrorStr = nullptr;
 
 HINSTANCE NativeLibraryHandle = NULL;
 
@@ -275,11 +286,13 @@ extern "C" const IJLibVersion* ijlGetLibVersion() {
 }
 
 extern "C" IJLERR _stdcall ijlInit(void* jcprops) { // jcprops is JPEG_CORE_PROPERTIES*
-	// TODO: Verify all this actually works
 	NativeLibraryHandle = LoadLibraryW(L"ijl15_native.dll");
 	if (NativeLibraryHandle != NULL) {
-		// TODO: Load the rest of the native functions
 		Native_ijlInit = (_ijlInit)GetProcAddress(NativeLibraryHandle, "ijlInit");
+		Native_ijlFree = (_ijlFree)GetProcAddress(NativeLibraryHandle, "ijlFree");
+		Native_ijlRead = (_ijlRead)GetProcAddress(NativeLibraryHandle, "ijlRead");
+		Native_ijlWrite = (_ijlWrite)GetProcAddress(NativeLibraryHandle, "ijlWrite");
+		Native_ijlErrorStr = (_ijlErrorStr)GetProcAddress(NativeLibraryHandle, "ijlErrorStr");
 		if (Native_ijlInit == nullptr) {
 			OutputDebugStringW(L"ERROR LOCATING NATIVE ijlInit!\n");
 			DebugBreak();
@@ -297,22 +310,31 @@ extern "C" IJLERR _stdcall ijlInit(void* jcprops) { // jcprops is JPEG_CORE_PROP
 }
 
 extern "C" IJLERR _stdcall ijlFree(void* jcprops) { // jcprops is JPEG_CORE_PROPERTIES*
-	// TODO: Forward the call
-	// TODO: Unload base library
+	if (NativeLibraryHandle != NULL) {
+		//Forward the method call
+		(Native_ijlFree)(jcprops);
+		//Unload base library
+		FreeLibrary(NativeLibraryHandle);
+		OutputDebugStringW(L"Unloading Library!\n");
+		NativeLibraryHandle = nullptr;
+	}
+
 	return IJLERR::IJL_OK;
 }
 
 extern "C" IJLERR _stdcall ijlRead(void* jcprops, IJLIOTYPE iotype) { // jcprops is JPEG_CORE_PROPERTIES*
-	// TODO: Forward the call
-	return IJLERR::IJL_OK;
+	//Forward the call
+	OutputDebugStringW(L"READING FILE!\n");
+	return (Native_ijlRead)(jcprops, iotype);
 }
 
 extern "C" IJLERR _stdcall ijlWrite(void* jcprops, IJLIOTYPE iotype) { // jcprops is JPEG_CORE_PROPERTIES*
-	// TODO: Forward the call
-	return IJLERR::IJL_OK;
+	//Forward the call
+	OutputDebugStringW(L"WRITING FILE!\n");
+	return (Native_ijlWrite)(jcprops, iotype);
 }
 
 extern "C" const char* _stdcall ijlErrorStr(IJLERR code) {
-	// TODO: Forward the call
-	return "LOMNHook: Not Implemented";
+	//Forward the call
+	return (Native_ijlErrorStr)(code);
 }
