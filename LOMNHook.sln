@@ -223,13 +223,9 @@ Global
 		{7A4A39FC-F0A8-4DBD-B0CA-C819EA93A387}.Rebuilt Release|x86.ActiveCfg = Rebuilt Release|Win32
 		{7A4A39FC-F0A8-4DBD-B0CA-C819EA93A387}.Rebuilt Release|x86.Build.0 = Rebuilt Release|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Alpha Debug|x86.ActiveCfg = Rebuilt Debug|Win32
-		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Alpha Debug|x86.Build.0 = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Alpha Release|x86.ActiveCfg = Rebuilt Debug|Win32
-		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Alpha Release|x86.Build.0 = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Beta Debug|x86.ActiveCfg = Rebuilt Debug|Win32
-		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Beta Debug|x86.Build.0 = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Beta Release|x86.ActiveCfg = Rebuilt Debug|Win32
-		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Beta Release|x86.Build.0 = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Rebuilt Debug|x86.ActiveCfg = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Rebuilt Debug|x86.Build.0 = Rebuilt Debug|Win32
 		{6B354022-CE7F-46A5-B799-16612C4C1A55}.Rebuilt Release|x86.ActiveCfg = Rebuilt Release|Win32
