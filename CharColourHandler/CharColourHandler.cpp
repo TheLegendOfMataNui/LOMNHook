@@ -312,10 +312,10 @@ Native::ScOSIVariant* GcCharacter__SetColors(Native::ScOSIVariant* result, Util:
         Native::ScFastColor* pMaskColor2 = (Native::ScFastColor*)(pMaskModel + 0x80);
         Native::ScFastColor* pMaskColor3 = (Native::ScFastColor*)(pMaskModel + 0x94);
 
-        pMaskColor1->R = (float)inColor2.R / 255.0f;
-        pMaskColor1->G = (float)inColor2.G / 255.0f;
-        pMaskColor1->B = (float)inColor2.B / 255.0f;
-        pMaskColor1->A = (float)inColor2.A / 255.0f;
+        pMaskColor1->R = (float)inColor1.R / 255.0f;
+        pMaskColor1->G = (float)inColor1.G / 255.0f;
+        pMaskColor1->B = (float)inColor1.B / 255.0f;
+        pMaskColor1->A = (float)inColor1.A / 255.0f;
         pMaskColor2->R = (float)inColor2.R / 255.0f;
         pMaskColor2->G = (float)inColor2.G / 255.0f;
         pMaskColor2->B = (float)inColor2.B / 255.0f;
